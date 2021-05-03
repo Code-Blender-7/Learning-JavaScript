@@ -1,9 +1,11 @@
 'use strict';
 
 
-let answer = Math.trunc(Math.random() * 5) + 1;
+let answer = Math.trunc(Math.random() * 20) + 1;
 let score = 20
-console.log(answer)
+let highscore = 0
+
+
 // Math.random generates a random decimal number
 // Decimal number must not be above 20
 // Number can be changed from "not decimal" number to interger by using Math.trunc
@@ -14,7 +16,9 @@ document.querySelector(`.again`).addEventListener(`click` , function () {
 	document.querySelector(`.message`).textContent = "Game Restarted";
 	document.querySelector(`.score`).textContent = 20; 
 	document.querySelector(`body`).style.backgroundColor = '#222';
-	document.querySelector(`.guess`).value = " ";
+	document.querySelector(`.guess`).value = "";
+	answer = Math.trunc(Math.random() * 20) + 1;
+
 });
 
 
@@ -42,6 +46,10 @@ document.querySelector('.check').addEventListener('click' , function () {
 		if (guess == answer) {
 			document.querySelector(`.message`).textContent = "Correct Number";
 			document.querySelector(`body`).style.backgroundColor = '#62FF4D'
+			if (score > highscore) {
+				highscore = score
+				document.querySelector(`.highscore`).textContent = highscore
+			}
 		} else if (guess > answer) {
 			document.querySelector(`.message`).textContent = "Number is too high"
 			score--;
