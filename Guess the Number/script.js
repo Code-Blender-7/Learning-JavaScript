@@ -4,7 +4,7 @@
 let answer = Math.trunc(Math.random() * 20) + 1;
 let score = 20
 let highscore = 0
-console.log(answer)
+
 // Math.random generates a random decimal number
 // Decimal number must not be above 20
 // Number can be changed from "not decimal" number to interger by using Math.trunc
@@ -26,7 +26,7 @@ document.querySelector(`.again`).addEventListener(`click` , function () {
 	document.querySelector(`body`).style.backgroundColor = '#222';
 	document.querySelector(`.guess`).value = "";
 	answer = Math.trunc(Math.random() * 20) + 1;
-	console.log(answer)
+
 
 });
 
@@ -41,34 +41,30 @@ document.querySelector('.check').addEventListener('click' , function () {
 // When there is no input
 	if (!guess) {
 		displayMessage("No number input")
-		if (guess === 0) {
-			displayMessage("Number cannot be 0")
-			losePoints();
-		}
 
-	} if (score === 1) {
-		document.querySelector(`.score`).textContent = 0;
-		displayMessage("You lost the game")
-		document.querySelector(`body`).style.backgroundColor = '#FF0A0A'
 	} else {
-
 		if (guess == answer) {
-			displayMessage("Correct Answer!")
+			displayMessage("Correct Answer!  Secret number changed")
 			document.querySelector(`body`).style.backgroundColor = '#62FF4D'
+			answer = Math.trunc(Math.random() * 20) + 1;
 			if (score > highscore) {
 				highscore = score
 				document.querySelector(`.highscore`).textContent = highscore
 			}
+		} else if (score === 1) {
+			document.querySelector(`.score`).textContent = 0;
+			displayMessage("You lost the game")
+			document.querySelector(`body`).style.backgroundColor = '#FF0A0A'
 		} else if (guess > answer) {
 			displayMessage("Number is too high!")
 			losePoints();
 
 			if (guess > 20) {
-				displayMessage("Value limit is 20!")
+				displayMessage("Number limit is 20!")
 			}
 		} else if (guess < answer){
-			displayMessage("Value is too low")
+			displayMessage("Number is too low!")
 			losePoints();
-		}		
+		}
 	}
 });
