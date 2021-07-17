@@ -11,7 +11,7 @@ Well, unless you are a newbie and new to web development. You have to download t
 If you know how to use git then you can try this on your command terminal - 
 
 ```
-git clone https://github.com/Code-Blender-7/Learning-JavaScript.git
+git clone Learning-JavaScript
 ```
 
- You can find a working preview of the website page[here](https://twitter.com/Black_2_white/status/1389266041025355780) 😋
+ You can find a working preview of the website page [here](https://twitter.com/Black_2_white/status/1389266041025355780) 😋
