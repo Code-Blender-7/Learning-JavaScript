@@ -106,7 +106,7 @@ const displayMovement = function(movements, sort=false) {
     <div class="movements__row">
       <div class="movements__type movements__type--${type}">${i+1}. ${type}</div>
       <div class="movements__date">3 days ago</div>
-      <div class="movements__value">${mov}$</div>
+      <div class="movements__value">${mov.toFixed(2)}$</div>
     </div>
     `;
 
@@ -142,9 +142,9 @@ const calcDisplaySummary = function(acc) {
     .reduce((acc,mov) => acc + mov, 0)
 
 
-  labelSumIn.textContent = `${Math.trunc(income)}$`
-  labelSumOut.textContent = `${Math.trunc(out)}$`
-  labelSumInterest.textContent = `${Math.trunc(interest)}$`
+  labelSumIn.textContent = `${income.toFixed(2)}$`
+  labelSumOut.textContent = `${out.toFixed(2)}$`
+  labelSumInterest.textContent = `${interest.toFixed(2)}$`
 }
 
 
@@ -153,7 +153,7 @@ const calcDisplaySummary = function(acc) {
 const calculateTotalBalance = function(acc) {
   acc.balance = acc.movements.reduce((acc,mov) => acc + mov, 0);
 
-  labelBalance.textContent = `${acc.balance}$`
+  labelBalance.textContent = `${acc.balance.toFixed(2)}$`
 }
 
 
@@ -193,7 +193,7 @@ btnLogin.addEventListener(`click` , function (e) {
   e.preventDefault(); 
 
 // Optional chaining
-  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+  if (currentAccount?.pin === +inputLoginPin.value) {
     // DIsplay UI and Welcome message
 
   labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(` `)[0]}`;
@@ -210,13 +210,13 @@ btnLogin.addEventListener(`click` , function (e) {
 
   } else {
     // display error message
-    labelWelcome.textContent = "No such account found.\nPlease Try again"
+    labelWelcome.textContent = "No such account found. Please Try again"
   }
 })
 
 btnTransfer.addEventListener(`click` , function(e) {
   e.preventDefault();
-  const amount = Number(inputTransferAmount.value);
+  const amount = +inputTransferAmount.value;
   const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value)
   inputTransferTo.value = inputTransferAmount.value = ''
 
@@ -242,7 +242,7 @@ btnTransfer.addEventListener(`click` , function(e) {
 
 btnLoan.addEventListener('click', function(e) {
   e.preventDefault();
-  const amount = Number(inputLoanAmount.value);
+  const amount = Math.floor(inputLoanAmount.value); // round down
   const req = amount * 10/100
 
   if (
@@ -261,7 +261,7 @@ btnClose.addEventListener(`click` , function(e) {
 
   if (
     inputCloseUsername.value === currentAccount?.username &&
-    Number(inputClosePin.value) === Number(currentAccount?.pin) 
+    +inputClosePin.value === +currentAccount?.pin
     ) {
     // find index of self account
     const index = accounts.findIndex(acc => acc.username === currentAccount.username)
@@ -272,6 +272,4 @@ btnClose.addEventListener(`click` , function(e) {
     containerApp.style.opacity = 0;
   }
 });
-
-
 
