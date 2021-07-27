@@ -99,7 +99,17 @@ const displayMovement = function(movements, sort=false) {
     btnSort.textContent = "↓ SORT"
   }
 
+// Present date and time. 
+// Month Day, year at hour:minute
+const date_time = new Date();
+const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date_time);
+const month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date_time);
+const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date_time);
+const hours = `${date_time.getHours()}`.padStart(2,0)
+const minutes = `${date_time.getMinutes()}`.padStart(2,0)
+labelDate.textContent = `${month} ${day}, ${year} at ${hours}:${minutes}` 
 
+// movements config
   timeLine.forEach(function(mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal'
     const html = `
@@ -125,7 +135,6 @@ btnSort.addEventListener('click' , function(e) {
 
 
 // in, out, interest
-
 const calcDisplaySummary = function(acc) {
   const income = acc.movements
     .filter(mov => mov > 0)
@@ -138,7 +147,9 @@ const calcDisplaySummary = function(acc) {
   const interest = acc.movements
     .filter(mov => mov > 0)
     .map(deposits => deposits * acc.interestRate/100)
+    // rate below 1 is not accepted
     .filter(int => int >= 1)
+    // sum
     .reduce((acc,mov) => acc + mov, 0)
 
 
@@ -157,10 +168,10 @@ const calculateTotalBalance = function(acc) {
 }
 
 
-
+// creating usernames
 const createUsernames = function(user) {
   user.forEach(function(acc) {
-    acc.username = acc.owner
+    acc.username = acc.owner  
       .toLowerCase()
       .split(" ")
       .map(name =>name[0])
@@ -170,6 +181,7 @@ const createUsernames = function(user) {
 
 createUsernames(accounts)
 
+// update ui for changes
 const updateUI = function(acc) {
   // Display movements
   displayMovement(acc.movements)
@@ -185,14 +197,14 @@ const updateUI = function(acc) {
 
 let currentAccount;
 
-// Event Handlers 
+// login in
 btnLogin.addEventListener(`click` , function (e) {
-  // Prevent form from submitting
-  // use this to override HTML default behavior
   currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
-  e.preventDefault(); 
+  // Prevent form from submitting
+  // loses focus on the html titlebox
+  e.preventDefault();
 
-// Optional chaining
+
   if (currentAccount?.pin === +inputLoginPin.value) {
     // DIsplay UI and Welcome message
 
@@ -214,6 +226,7 @@ btnLogin.addEventListener(`click` , function (e) {
   }
 })
 
+// transfer money
 btnTransfer.addEventListener(`click` , function(e) {
   e.preventDefault();
   const amount = +inputTransferAmount.value;
@@ -240,6 +253,7 @@ btnTransfer.addEventListener(`click` , function(e) {
 
 })
 
+// Request loan
 btnLoan.addEventListener('click', function(e) {
   e.preventDefault();
   const amount = Math.floor(inputLoanAmount.value); // round down
@@ -255,7 +269,7 @@ btnLoan.addEventListener('click', function(e) {
 })
 
 
-
+// close Account
 btnClose.addEventListener(`click` , function(e) {
   e.preventDefault();
 
@@ -272,4 +286,6 @@ btnClose.addEventListener(`click` , function(e) {
     containerApp.style.opacity = 0;
   }
 });
+
+
 
