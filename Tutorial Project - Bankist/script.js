@@ -75,20 +75,38 @@ document.querySelector(`.balance__label`).textContent = "Current Balance. This i
 
 // Present date and time. 
 // STRUCTURE => Month Day, year at hour:minute
+
+
 const date_time = new Date();
 const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date_time);
 const month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date_time);
 const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date_time);
 const hours = `${date_time.getHours()}`.padStart(2,0)
 const minutes = `${date_time.getMinutes()}`.padStart(2,0)
+const time = `${month} ${day}, ${year} at ${hours}:${minutes}`
 // Implement time
 
 
+const formatMovementDates = function(MovDates) {
+    const CalcDays = (date1 , date2) => Math.round(Math.abs(date2 - date1) / (1000*60*60*24))
+    let date_present = new Date()
+    let date_past = new Date(currentAccount.movementsDates[MovDates])
+    const days = CalcDays(date_present , date_past)
 
+    if(days === 0) return "Today";
+    if(days === 1) return "Yesterday";
+    if(days <= 2) return `${days} days ago`;
+    else {
+      const day = `${date_past.getDate()}`.padStart(2,0)
+      const month = `${date_past.getMonth()}`
+      const year = `${date_past.getFullYear()}`
+      return `${day}/${month}/${year}`
+    }
+
+};
 
 const displayMovement = function(movements, sort=false) {
   containerMovements.innerHTML =  " "
-
   const timeLine = sort ? movements.slice().sort((a,b) => a-b) : movements
   
   if (sort) {
@@ -97,25 +115,19 @@ const displayMovement = function(movements, sort=false) {
     btnSort.textContent = "↓ SORT"
   }
 
-
-  labelDate.textContent = `${month} ${day}, ${year} at ${hours}:${minutes}` 
-
+  labelDate.textContent = time
 
 // movements config
   timeLine.forEach(function(mov, i) {
 
     // CONCEPT - Substract present day with the current movement date in millisecodns
-    let date_present = new Date().getTime()
-    let date_past = new Date(currentAccount.movementsDates[i]).getTime()
-    // milliseconds to days. 
-    let time_to_days = +Math.abs(Math.floor((date_past - date_present) / 86400000))
 
     const type = mov > 0 ? 'deposit' : 'withdrawal'
     const date = new Date('2019-11-18T21:31:17.178Z')
     const html = `
     <div class="movements__row">
       <div class="movements__type movements__type--${type}">${i+1}. ${type}</div>
-      <div class="movements__date">${time_to_days} days ago</div>
+      <div class="movements__date">${formatMovementDates(i)}</div>
       <div class="movements__value">${mov.toFixed(2)}$</div>
     </div>
     `;
@@ -166,7 +178,6 @@ const calculateTotalBalance = function(acc) {
 
   labelBalance.textContent = `${acc.balance.toFixed(2)}$`
 }
-
 
 // creating usernames
 const createUsernames = function(user) {
@@ -234,7 +245,7 @@ btnTransfer.addEventListener(`click` , function(e) {
   const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value)
   inputTransferTo.value = inputTransferAmount.value = ''
 
-  console.log(amount, receiverAcc)
+  
   if (
     amount > 0 && 
     // receiver must have the existing account
@@ -246,6 +257,11 @@ btnTransfer.addEventListener(`click` , function(e) {
 
   currentAccount.movements.push(-amount);
   receiverAcc.movements.push(amount);
+
+  currentAccount.movementsDates.push(new Date);
+  receiverAcc.movementsDates.push(new Date);
+
+
 
   // Update the ui
   updateUI(currentAccount)
@@ -266,9 +282,9 @@ btnLoan.addEventListener('click', function(e) {
     ) {
     currentAccount.movements.push(amount)
     updateUI(currentAccount);
+    currentAccount.movementsDates.push(new Date);
   }
 })
-
 
 // close Account
 btnClose.addEventListener(`click` , function(e) {
@@ -287,6 +303,3 @@ btnClose.addEventListener(`click` , function(e) {
     containerApp.style.opacity = 0;
   }
 });
-
-
-
