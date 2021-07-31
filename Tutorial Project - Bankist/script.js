@@ -41,21 +41,6 @@ const account2 = {
   locale: 'en-US',
 };
 
-const account3 = {
-  owner: 'Steven Thomas Williams',
-  movements: [200, -200, 340, -300, -20, 50, 400, -460],
-  interestRate: 0.7,
-  pin: 3333,
-};
-
-const account4 = {
-  owner: 'Sarah Smith',
-  movements: [430, 1000, 700, 50, 90],
-  interestRate: 1,
-  pin: 4444,
-};
-
-const account_1 = [account1, account2, account3, account4];
 const accounts = [account1, account2]
 
 
@@ -88,6 +73,19 @@ document.querySelector(`.balance__label`).textContent = "Current Balance. This i
 
 
 
+// Present date and time. 
+// STRUCTURE => Month Day, year at hour:minute
+const date_time = new Date();
+const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date_time);
+const month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date_time);
+const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date_time);
+const hours = `${date_time.getHours()}`.padStart(2,0)
+const minutes = `${date_time.getMinutes()}`.padStart(2,0)
+// Implement time
+
+
+
+
 const displayMovement = function(movements, sort=false) {
   containerMovements.innerHTML =  " "
 
@@ -99,23 +97,25 @@ const displayMovement = function(movements, sort=false) {
     btnSort.textContent = "↓ SORT"
   }
 
-// Present date and time. 
-// Month Day, year at hour:minute
-const date_time = new Date();
-const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date_time);
-const month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date_time);
-const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date_time);
-const hours = `${date_time.getHours()}`.padStart(2,0)
-const minutes = `${date_time.getMinutes()}`.padStart(2,0)
-labelDate.textContent = `${month} ${day}, ${year} at ${hours}:${minutes}` 
+
+  labelDate.textContent = `${month} ${day}, ${year} at ${hours}:${minutes}` 
+
 
 // movements config
   timeLine.forEach(function(mov, i) {
+
+    // CONCEPT - Substract present day with the current movement date in millisecodns
+    let date_present = new Date().getTime()
+    let date_past = new Date(currentAccount.movementsDates[i]).getTime()
+    // milliseconds to days. 
+    let time_to_days = +Math.abs(Math.floor((date_past - date_present) / 86400000))
+
     const type = mov > 0 ? 'deposit' : 'withdrawal'
+    const date = new Date('2019-11-18T21:31:17.178Z')
     const html = `
     <div class="movements__row">
       <div class="movements__type movements__type--${type}">${i+1}. ${type}</div>
-      <div class="movements__date">3 days ago</div>
+      <div class="movements__date">${time_to_days} days ago</div>
       <div class="movements__value">${mov.toFixed(2)}$</div>
     </div>
     `;
@@ -200,6 +200,7 @@ let currentAccount;
 // login in
 btnLogin.addEventListener(`click` , function (e) {
   currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+
   // Prevent form from submitting
   // loses focus on the html titlebox
   e.preventDefault();
