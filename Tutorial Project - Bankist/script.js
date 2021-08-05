@@ -7,6 +7,7 @@ const account1 = {
   interestRate: 1.2, // %
   pin: 1111,
 
+
   movementsDates: [
     '2019-11-18T21:31:17.178Z',
     '2019-12-23T07:42:02.383Z',
@@ -73,37 +74,6 @@ document.querySelector(`.balance__label`).textContent = "Current Balance. This i
 
 
 
-// Present date and time. 
-// STRUCTURE => Month Day, year at hour:minute
-
-
-const date_time = new Date();
-const year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date_time);
-const month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date_time);
-const day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date_time);
-const hours = `${date_time.getHours()}`.padStart(2,0)
-const minutes = `${date_time.getMinutes()}`.padStart(2,0)
-const time = `${month} ${day}, ${year} at ${hours}:${minutes}`
-// Implement time
-
-
-const formatMovementDates = function(MovDates) {
-    const CalcDays = (date1 , date2) => Math.round(Math.abs(date2 - date1) / (1000*60*60*24))
-    let date_present = new Date()
-    let date_past = new Date(currentAccount.movementsDates[MovDates])
-    const days = CalcDays(date_present , date_past)
-
-    if(days === 0) return "Today";
-    if(days === 1) return "Yesterday";
-    if(days <= 2) return `${days} days ago`;
-    else {
-      const day = `${date_past.getDate()}`.padStart(2,0)
-      const month = `${date_past.getMonth()}`
-      const year = `${date_past.getFullYear()}`
-      return `${day}/${month}/${year}`
-    }
-
-};
 
 const displayMovement = function(movements, sort=false) {
   containerMovements.innerHTML =  " "
@@ -115,12 +85,32 @@ const displayMovement = function(movements, sort=false) {
     btnSort.textContent = "↓ SORT"
   }
 
-  labelDate.textContent = time
+    // API EXPERIMENTS
+  const now = new Date();
+  const options = {
+    dateStyle: "full",
+    timeStyle : "short",
+    weekDay : "short"
+
+  };
+  const locale = currentAccount.locale; // get user locale from accounts
+  labelDate.textContent = new Intl.DateTimeFormat(locale , options).format(now)
+
+
+  const formatMovementDates = function(MovDates) {
+      const CalcDays = (date1 , date2) => Math.round(Math.abs(date2 - date1) / (1000*60*60*24))
+      let date_present = new Date()
+      let date_past = new Date(currentAccount.movementsDates[MovDates])
+      const days = CalcDays(date_present , date_past)
+
+      if(days === 0) return "Just Now";
+      if(days === 1) return "Yesterday";
+      if(days >= 7) return new Intl.DateTimeFormat(locale).format(date_past);
+
+  };
 
 // movements config
   timeLine.forEach(function(mov, i) {
-
-    // CONCEPT - Substract present day with the current movement date in millisecodns
 
     const type = mov > 0 ? 'deposit' : 'withdrawal'
     const date = new Date('2019-11-18T21:31:17.178Z')
@@ -236,7 +226,11 @@ btnLogin.addEventListener(`click` , function (e) {
     // display error message
     labelWelcome.textContent = "No such account found. Please Try again"
   }
+
 })
+
+
+
 
 // transfer money
 btnTransfer.addEventListener(`click` , function(e) {
@@ -281,8 +275,10 @@ btnLoan.addEventListener('click', function(e) {
     currentAccount.movements.some(mov => req)
     ) {
     currentAccount.movements.push(amount)
+    currentAccount.movementsDates.push(new Date());
+
     updateUI(currentAccount);
-    currentAccount.movementsDates.push(new Date);
+
   }
 })
 
@@ -303,3 +299,5 @@ btnClose.addEventListener(`click` , function(e) {
     containerApp.style.opacity = 0;
   }
 });
+
+
