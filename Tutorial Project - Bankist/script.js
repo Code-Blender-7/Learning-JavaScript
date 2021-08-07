@@ -73,7 +73,10 @@ const inputClosePin = document.querySelector('.form__input--pin');
 document.querySelector(`.balance__label`).textContent = "Current Balance. This is a sample version"
 
 
-// format values 
+
+// Present date and time. 
+// STRUCTURE => Month Day, year at hour:minute
+
 const formatCurrency = function(value, locale, currency) {
   return new Intl.NumberFormat(currentAccount.locale, {
     style : 'currency',
@@ -161,11 +164,13 @@ const calcDisplaySummary = function(acc) {
     // sum
     .reduce((acc,mov) => acc + mov, 0)
 
-  // format currency in sync to active user's map data
+
   labelSumIn.textContent = `${formatCurrency(income, currentAccount.locale, currentAccount.currency)}`
   labelSumOut.textContent = `${formatCurrency(out, currentAccount.locale, currentAccount.currency)}`
   labelSumInterest.textContent = `${formatCurrency(interest, currentAccount.locale, currentAccount.currency)}`
 }
+
+
 
 // show balance
 const calculateTotalBalance = function(acc) {
@@ -198,7 +203,35 @@ const updateUI = function(acc) {
 
 }
 
-let currentAccount;
+
+const startLogoutTimer = function() {
+  // set the time to 5 minutes
+  let time = 300
+  // call time every second
+  const tick = function() {
+    const min = String(Math.trunc(time / 60)).padStart(2 , 0)
+    const sec = String(time % 60).padStart(2,0)
+    labelTimer.textContent = `${min}:${sec}`;
+
+
+  // log remaining time to UI
+
+  // stop timer after 0 and logout
+  if (time === 0) {
+    clearInterval(timer)
+    labelWelcome.textContent = "Login to get started"
+    containerApp.style.opacity = 0;
+    }
+//  decrease sec
+    time--; 
+  };
+
+  const timer = setInterval(tick, 1000)
+  return timer;
+}
+
+
+let currentAccount, timer;
 // login in
 btnLogin.addEventListener(`click` , function (e) {
   currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
@@ -220,11 +253,15 @@ btnLogin.addEventListener(`click` , function (e) {
   // lose input field focus
   inputLoginPin.blur();
 
+  // start logout timer
+  if (timer) clearInterval(timer);
+    // stop if timer already running across accounts
+  timer = startLogoutTimer();
   // Update the ui
   updateUI(currentAccount)
 
   } else {
-    // display error message
+    // display no user account found
     labelWelcome.textContent = "No such account found. Please Try again"
   }
 
@@ -254,7 +291,9 @@ btnTransfer.addEventListener(`click` , function(e) {
   currentAccount.movementsDates.push(new Date);
   receiverAcc.movementsDates.push(new Date);
 
-
+  // restart timer
+  clearInterval(timer)
+  timer = startLogoutTimer()
 
   // Update the ui
   updateUI(currentAccount)
@@ -284,9 +323,15 @@ btnLoan.addEventListener('click', function(e) {
   } else {
     alert(`You don't have the requirements to make a loan!`)
   }
-  // clear box after input
+  
+  
+  // restart timer
+  clearInterval(timer)
+  timer = startLogoutTimer()
 
+  // clear box after input
   inputLoanAmount.value = '';
+
 
 })
 
@@ -307,3 +352,4 @@ btnClose.addEventListener(`click` , function(e) {
     containerApp.style.opacity = 0;
   }
 });
+
