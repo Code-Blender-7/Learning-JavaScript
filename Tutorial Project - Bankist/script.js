@@ -73,11 +73,17 @@ const inputClosePin = document.querySelector('.form__input--pin');
 document.querySelector(`.balance__label`).textContent = "Current Balance. This is a sample version"
 
 
+// format values 
+const formatCurrency = function(value, locale, currency) {
+  return new Intl.NumberFormat(currentAccount.locale, {
+    style : 'currency',
+    currency : currency,
+  }).format(value)
+  }
 
-
-const displayMovement = function(movements, sort=false) {
+const displayMovement = function(acc, sort=false) {
   containerMovements.innerHTML =  " "
-  const timeLine = sort ? movements.slice().sort((a,b) => a-b) : movements
+  const timeLine = sort ? acc.slice().sort((a,b) => a-b) : acc
   
   if (sort) {
     btnSort.textContent = "SORTED"
@@ -85,7 +91,7 @@ const displayMovement = function(movements, sort=false) {
     btnSort.textContent = "↓ SORT"
   }
 
-    // API EXPERIMENTS
+// API EXPERIMENTS
   const now = new Date();
   const options = {
     dateStyle: "full",
@@ -93,7 +99,7 @@ const displayMovement = function(movements, sort=false) {
     weekDay : "short"
 
   };
-  const locale = currentAccount.locale; // get user locale from accounts
+  const locale = currentAccount.locale;
   labelDate.textContent = new Intl.DateTimeFormat(locale , options).format(now)
 
 
@@ -113,12 +119,13 @@ const displayMovement = function(movements, sort=false) {
   timeLine.forEach(function(mov, i) {
 
     const type = mov > 0 ? 'deposit' : 'withdrawal'
-    const date = new Date('2019-11-18T21:31:17.178Z')
+    const formattedMov = formatCurrency(mov, currentAccount.locale, currentAccount.currency)
+
     const html = `
     <div class="movements__row">
       <div class="movements__type movements__type--${type}">${i+1}. ${type}</div>
       <div class="movements__date">${formatMovementDates(i)}</div>
-      <div class="movements__value">${mov.toFixed(2)}$</div>
+      <div class="movements__value">${formattedMov}</div>
     </div>
     `;
 
@@ -154,19 +161,17 @@ const calcDisplaySummary = function(acc) {
     // sum
     .reduce((acc,mov) => acc + mov, 0)
 
-
-  labelSumIn.textContent = `${income.toFixed(2)}$`
-  labelSumOut.textContent = `${out.toFixed(2)}$`
-  labelSumInterest.textContent = `${interest.toFixed(2)}$`
+  // format currency in sync to active user's map data
+  labelSumIn.textContent = `${formatCurrency(income, currentAccount.locale, currentAccount.currency)}`
+  labelSumOut.textContent = `${formatCurrency(out, currentAccount.locale, currentAccount.currency)}`
+  labelSumInterest.textContent = `${formatCurrency(interest, currentAccount.locale, currentAccount.currency)}`
 }
-
-
 
 // show balance
 const calculateTotalBalance = function(acc) {
   acc.balance = acc.movements.reduce((acc,mov) => acc + mov, 0);
 
-  labelBalance.textContent = `${acc.balance.toFixed(2)}$`
+  labelBalance.textContent = `${formatCurrency(acc.balance, currentAccount.locale, currentAccount.currency)}`
 }
 
 // creating usernames
@@ -186,18 +191,14 @@ createUsernames(accounts)
 const updateUI = function(acc) {
   // Display movements
   displayMovement(acc.movements)
-
   // Display balance
   calculateTotalBalance(acc)
-
   // Display Summary
   calcDisplaySummary(acc)
 
 }
 
-
 let currentAccount;
-
 // login in
 btnLogin.addEventListener(`click` , function (e) {
   currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
@@ -228,8 +229,6 @@ btnLogin.addEventListener(`click` , function (e) {
   }
 
 })
-
-
 
 
 // transfer money
@@ -272,14 +271,23 @@ btnLoan.addEventListener('click', function(e) {
 
   if (
     amount > 0 &&
+    
     currentAccount.movements.some(mov => req)
     ) {
-    currentAccount.movements.push(amount)
-    currentAccount.movementsDates.push(new Date());
+// set delay
+    setTimeout(function() {
+      currentAccount.movements.push(amount)
+      currentAccount.movementsDates.push(new Date());
+      updateUI(currentAccount);
 
-    updateUI(currentAccount);
-
+    } , 2500);
+  } else {
+    alert(`You don't have the requirements to make a loan!`)
   }
+  // clear box after input
+
+  inputLoanAmount.value = '';
+
 })
 
 // close Account
@@ -299,5 +307,3 @@ btnClose.addEventListener(`click` , function(e) {
     containerApp.style.opacity = 0;
   }
 });
-
-
