@@ -85,17 +85,7 @@ const options = {
 
 
 
-// const startLogoutTimer = function() {
-//   // call time every second
-//   const tick = function() {
 
-//   	const now = new Date();
-// 		labelDate.textContent = new Intl.DateTimeFormat(locale , options).format(now)
-
-
-//   const timer = setInterval(tick, 1000)
-//   return timer;
-// }
 
 
 
@@ -109,8 +99,8 @@ const formatCurrency = function(value, locale, currency) {
   }).format(value)
   }
 
+let clock;
 const displayMovement = function(acc, sort=false) {
-
   containerMovements.innerHTML =  " "
   const timeLine = sort ? acc.slice().sort((a,b) => a-b) : acc
   const locale = currentAccount.locale;
@@ -121,15 +111,17 @@ const displayMovement = function(acc, sort=false) {
     btnSort.textContent = "🔽 SORT"
   }
 
-// API EXPERIMENTS
 
-	setInterval(function() {
-		const now = new Date()
+  const real_time = setInterval(function() {
+  	const now = new Date()
 		labelDate.textContent = new Intl.DateTimeFormat(locale , options).format(now)
+		}, 1000)
 
-	}, 1000)
-  
-
+	// start user clock
+  if (clock) clearInterval(clock);
+  // if user_clock running already on another account, restart that clock.
+  clock = real_time;
+	
 
   const formatMovementDates = function(MovDates) {
       const CalcDays = (date1 , date2) => Math.round(Math.abs(date2 - date1) / (1000*60*60*24))
@@ -231,7 +223,7 @@ const updateUI = function(acc) {
 
 const startLogoutTimer = function() {
   // set the time to 5 minutes
-  let time = 30
+  let time = 300
   // call time every second
   const tick = function() {
     const min = String(Math.trunc(time / 60)).padStart(2 , 0)
@@ -398,5 +390,3 @@ labelSumOut.addEventListener('click' , function() {
   })
 sumOutHighlight = !sumOutHighlight
 })
-
-
