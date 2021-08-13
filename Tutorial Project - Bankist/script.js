@@ -70,8 +70,8 @@ const inputTransferAmount = document.querySelector('.form__input--amount');
 const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
-document.querySelector(`.balance__label`).textContent = "Current Balance. This is a sample version"
-const options = {
+
+const date_config = {
   weekday: 'short',
   year: '2-digit',
   month: 'short',
@@ -80,13 +80,6 @@ const options = {
   minute: '2-digit',
   second: '2-digit',
 };
-
-
-
-
-
-
-
 
 
 // Present date and time. 
@@ -114,7 +107,7 @@ const displayMovement = function(acc, sort=false) {
 
   const real_time = setInterval(function() {
   	const now = new Date()
-		labelDate.textContent = new Intl.DateTimeFormat(locale , options).format(now)
+		labelDate.textContent = new Intl.DateTimeFormat(locale , date_config).format(now)
 		}, 1000)
 
 	// start user clock
@@ -175,7 +168,7 @@ const calcDisplaySummary = function(acc) {
 
   const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(deposits => deposits * acc.interestRate/100)
+    .map(deposits => deposits * acc.interestRate/180)
     // rate below 1 is not accepted
     .filter(int => int >= 1)
     // sum
@@ -186,7 +179,6 @@ const calcDisplaySummary = function(acc) {
   labelSumOut.textContent = `${formatCurrency(out, currentAccount.locale, currentAccount.currency)}`
   labelSumInterest.textContent = `${formatCurrency(interest, currentAccount.locale, currentAccount.currency)}`
 }
-
 
 
 // show balance
@@ -231,8 +223,8 @@ const startLogoutTimer = function() {
     labelTimer.textContent = `${min}:${sec}`;
 
 
-  // log remaining time to UI
 
+  if (time < 10) labelTimer.style.color = 'red'
   // stop timer after 0 and logout
   if (time === 0) {
     clearInterval(timer)
@@ -277,22 +269,18 @@ btnLogin.addEventListener(`click` , function (e) {
   // Update the ui
   updateUI(currentAccount)
 
-  } else {
-    // display error message
-    labelWelcome.textContent = "No such account found. Please Try again"
-  }
-
+  } else labelWelcome.textContent = "No such account found. Please Try again"
 })
 
 
-// transfer money
+// transfer money from self to foreign account
 btnTransfer.addEventListener(`click` , function(e) {
   e.preventDefault();
-  const amount = +inputTransferAmount.value;
+  let amount = +inputTransferAmount.value;
   const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value)
   inputTransferTo.value = inputTransferAmount.value = ''
 
-  
+  if (receiverAcc?.username === currentAccount.username) alert(`You can't send money to yourself, ${currentAccount.owner.split(` `)[0]}`)  
   if (
     amount > 0 && 
     // receiver must have the existing account
@@ -302,51 +290,50 @@ btnTransfer.addEventListener(`click` , function(e) {
     // Not going to transfer money to self account
     receiverAcc?.username !== currentAccount.username) {
 
-  currentAccount.movements.push(-amount);
-  receiverAcc.movements.push(amount);
-
+  // add dates of events to account
   currentAccount.movementsDates.push(new Date);
   receiverAcc.movementsDates.push(new Date);
+
+  // push reducted value to account 
+  currentAccount.movements.push(-amount);
+
+  // 1 EUR = 1.17 USD (2020)
+  if (currentAccount.currency == "EUR" && receiverAcc.currency == "USD") amount = amount * 1.17
+  if (currentAccount.currency == "USD" && receiverAcc.currency == "EUR") amount = amount * 0.85 
+  
+  receiverAcc.movements.push(amount);
 
   // restart timer
   clearInterval(timer)
   timer = startLogoutTimer()
-
   // Update the ui
   updateUI(currentAccount)
   } 
-
-
 })
 
-// Request loan
+// Request loan from main bank
 btnLoan.addEventListener('click', function(e) {
   e.preventDefault();
-  const amount = Math.floor(inputLoanAmount.value); // round down
+  let amount = Math.floor(inputLoanAmount.value); // round down
   const req = amount * 10/100
 
   if (amount > 0 && currentAccount.movements.some(mov => req)) {
 // set delay
     setTimeout(function() {
-      currentAccount.movements.push(amount)
       currentAccount.movementsDates.push(new Date());
+
+      currentAccount.movements.push(amount)
       updateUI(currentAccount);
 
     } , 2500);
-  } else {
-    alert(`You don't have the requirements to make a loan!`)
-  }
-  
-  
+  } else alert(`You don't have the requirements to make a loan!`)
+
   // restart timer
   clearInterval(timer)
   timer = startLogoutTimer()
 
-
   // clear box after input
   inputLoanAmount.value = '';
-
-
 })
 
 // close Account
@@ -368,8 +355,7 @@ btnClose.addEventListener(`click` , function(e) {
 });
 
 
-// highlight movements
-
+// highlight movements - IN
 let sumInHighlight = true
 labelSumIn.addEventListener('click' , function() {
   [...document.querySelectorAll('.movements__value')]
@@ -380,13 +366,13 @@ labelSumIn.addEventListener('click' , function() {
 	sumInHighlight = !sumInHighlight
 })
 
-
+// highlight movements - OUT
 let sumOutHighlight = true
 labelSumOut.addEventListener('click' , function() {
   [...document.querySelectorAll('.movements__value')]
 .forEach(function(row , i) {
-    if (parseInt(row.textContent) < 0 && sumOutHighlight) row.style.backgroundColor = 'red'
-    else row.style.backgroundColor = 'white'
+    if (parseInt(row.textContent) < 0 && sumOutHighlight) row.style.color = 'red'
+    else row.style.color = 'black'
   })
 sumOutHighlight = !sumOutHighlight
 })
