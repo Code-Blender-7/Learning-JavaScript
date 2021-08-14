@@ -70,3 +70,5 @@ Thanks to the best motivators of the #DEVcommunity on my #100daysofcode campaign
 Instructor - [@jonasschmedtman](https://twitter.com/jonasschmedtman) </br>
 Script coder - [@Black_2_white](https://twitter.com/Black_2_white)
 
+
+_COPYRIGHT RESERVED BY Jonas Schmedtmann_
