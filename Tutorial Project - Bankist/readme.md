@@ -1,4 +1,4 @@
-## Introduction
+## 1. Introduction
 
 Bankist is a web development tutorial project.
 
@@ -10,11 +10,15 @@ According to the course, the index.html and style.css were created by default by
 
 To ensure the original author's authencitity, no code nor comment on the index.html and the style.css was made. The script.js is modified by me where I added numerous upgrade that is wayy advanced then the original final .js file. 
 
-## Structure of the Project- 
+//////////////////////////////////////////////////////////
+
+## 2. Structure of the Project- 
 Below is a map that shows the functionality layout of the project. This map is created by *Schmedtmann*  during the course. 
 ![Map layout](https://github.com/Code-Blender-7/Learning-JavaScript/blob/main/Tutorial%20Project%20-%20Bankist/~readme_folder_DATA/Bankist-flowchart.png?raw=true)
 
-## How does it work?
+//////////////////////////////////////////////////////////
+
+## 3. How does it work?
 The Bankist has two account database i.e two maps containing a series of values. The bankist project names the transactions as movements. For showing the transactions, the script.js changes the html of the website and displays the movements of the account by rows. 
 
 The project starts with a "Login" page. Users have to input the correct username and the password to access the account. 
@@ -43,12 +47,13 @@ I added numerous changes like -
 
 <u>Below are a list of todo that are completed for the modified functions</u>
 
-1. <s>make transaction realisitc by converting Euros to USD </s>✅
-2. <s>Add real time user clock </s> ✅
-3. <s>Add new time color change where the timeout clock will turn red if less than 10 seconds</s> ✅
+1. ✅<s>make transaction realisitc by converting Euros to USD </s>
+2. ✅<s>Add real time user clock </s> 
+3. ✅<s>Add new time color change where the timeout clock will turn red if less than 10 seconds</s> 
 
+//////////////////////////////////////////////////////////
 
-## Files Structure and Informations
+## 4. Files Structure and Informations
 
  - ~readme_folder_DATA/ - Contains data related to the readme.
  - ProjectFILES/ -
@@ -63,8 +68,9 @@ Once again, .html and the .css are created by Jonas while I simply edited the sc
 ### ⚠ Caution ⚠
 To improve readability, there are a number of rare syntax within the code. It'll may be a problem with your code formatter package if you have one installed. 
 
+//////////////////////////////////////////////////////////
   
-## Credits
+## 5. Credits
 Thanks to the best motivators of the #DEVcommunity on my #100daysofcode campaign. 
 
 Instructor - [@jonasschmedtman](https://twitter.com/jonasschmedtman) </br>
