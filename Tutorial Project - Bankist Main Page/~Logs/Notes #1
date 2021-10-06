@@ -1,0 +1,48 @@
+These are the conventional notes that were acquired from the practice of the Section 13 of the JavaScript Course done by jonas.io 
+
+################# START 
+
+JavaScript uses DOM to interface with the Browsers like Chrome, Edge, Firefox etc. 
+
+We can write JavaScript to create, edit, delete HTML elements. 
+
+We can also set styles, classes, attributes and also listen/respond to events. 
+
+We can use the DOM tree which is created from the HTML Document when executed and interact with it.io
+
+DOM is a very complex API and it has a lot of methods and  properties to interact with the DOM Tree that was generated from the html Document.
+API = Application Programming interface
+
+examples - .querySelector(), .addEventListener(), .innerHTML() etc. 
+
+
+
+### HOW IS DOM RECOGNIZED 
+
+DOM works by using Nodes. Nodes are represented by their objects.io
+Nodes are like Elements, Text, Comments, Documents. 
+
+<p> </p> => elements
+the text between the elements => text  
+<!-- comments --> => Comments 
+.querySelector, .createElements, .getElementById => Documents
+
+
+HTMLElements - HTML elements can be of any type.  
+
+
+
+
+DOM can work by using the *inheritance of methods and properties* method. 
+Any HTMLElements will have their access to nodes like .addEventListener(), .cloneNode(), .closest()
+
+
+DOM API are broken up into several types of nodes. JavaScript uses the Nodes to interact with DOM which will allow to interact with the HTML.
+
+.addEventListener are used to listen and respond to the nodes.
+
+
+
+
+In a document, all the other that doesn't need to interact with the DOM and HTML can be abstraction or irrevelent. 
+  
