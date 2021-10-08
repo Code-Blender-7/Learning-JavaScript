@@ -1,0 +1,39 @@
+Selecting, Creating and Deleting Elements
+
+Very hard topic. Said the instructor.
+
+/// Selecting the HTML document
+
+console.log(document.documentElement); // // Print the entire document.
+console.log(document.head); // // Print the document head section only.
+console.log(document.body); // // Print the document body section only.
+
+
+
+USE querySelector to select the first occurance of the HTMLElements.
+USE queySelectorAll to select all the occurance of the HTMLElements.
+
+getElementsByTagName = ('button')
+getElementByClassName = ('27')
+
+
+####### CREATING AND EDITING STUFF
+
+use the createElement to create any HTMLElement. The created element would appear on the elements tab of the inspection app but not on the remote file.
+
+Use classlist.add to add classes to the created element like if the createElement was "div" and the classlist.add would be classlist.add('class--HighTower') then the element on the inspect app would show on the html <div class="class--HighTower">...</div>
+
+add text or other stuff inside the element's ... by using the innerHTML of the created element like this
+
+
+```
+message.innerHTML = "We use cookies for improved functionality <button class="btn--close-cookie">Got it!</button>"
+```
+
+use header.prepend to insert the created element to the html. 
+
+header.prepend = first child
+header.append = last child
+
+first child means the element is created in the upper top.
+last child means the element is created in the lower part of the screen.

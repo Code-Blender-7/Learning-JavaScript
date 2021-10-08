@@ -5,7 +5,7 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const header = document.querySelector('.header')
-
+const title = document.querySelector('title')
 ///////////////////////////////////////
 // Modal window
 
@@ -73,11 +73,62 @@ message.classList.add('cookie-message') // Adding a class to the div
 
 message.innerHTML = 'We use cookies for improved functionality <button class="btn btn--close-cookie">Got it!</button>'
 message.style.background = 'yellow'
-message.color = "black"
-console.log(message) 
-header.prepend(message)
 
 
+
+header.append(message)
+
+header.after(message) // after the header
+header.before(message) // before the header
+
+
+// REMOVING Elements + Changing Stuff
+document.querySelector('.btn--close-cookie').addEventListener('click', function() {
+  message.remove()
+  title.textContent = "𝙱𝚊𝚗𝚔𝚒𝚜𝚝 | 𝚆𝚑𝚎𝚗 𝙱𝚊𝚗𝚔𝚒𝚗𝚐 𝚖𝚎𝚎𝚝𝚜 𝙼𝚒𝚗𝚒𝚖𝚊𝚕𝚒𝚜"
+})
+
+
+
+// Styles
+
+message.style.backgroundColor = "#37383d"
+message.style.width = "120%"
+
+console.log(message.style.backgroundColor)
+console.log(message.style.width)
+
+
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);
+
+
+message.style.height = Number.parseFloat(getComputedStyle(message).height,10) + 20 + "px";
+
+
+// CSS custom properties
+document.documentElement.style.setProperty('--color-primary', 'orangered')
+
+
+// Attributes
+
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt)
+console.log(logo.src)
+
+// Remember that the HTMLElements cannot printout custom attributes that are not standerd.
+
+console.log(logo.designer)
+console.log(logo.className)
+
+// However, you can read the dom by using getAttribute
+console.log(logo.getAttribute('designer'))
+
+// Ways to set attribute
+logo.setAttribute('company', 'bankist')
+
+// Change the attribute value
+logo.alt = "Beautiful minimalist logo"
 
 
 

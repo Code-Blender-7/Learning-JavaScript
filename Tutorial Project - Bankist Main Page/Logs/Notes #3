@@ -1,0 +1,39 @@
+Logs for the style selection and the CSS designs done in the JavaScript file.
+
+Tutorials from Jonas.io
+
+
+message.style.backgroundcolor = "color";
+
+use this syntax to change the background in the css property
+
+
+what is the getComputeredStyle function?
+
+syntax - getComputedStyle(element).property
+
+
+it is the generated style that is created in the page. A computedStyle is not always like the CSS style.
+
+It is recommended to use getComputedStyle to get accurate results and performance of the website
+
+You may need to use parseFloat to change the data.
+
+
+
+You can use JavaScript to inherit unused style from the css and set them on the js file.
+
+Note that the JavaScript may always not be able to show if there is any issues while sharing the css style.
+
+
+
+
+// However, you can read the dom by using getAttribute
+
+console.log(logo.getAttribute('designer'))
+
+
+
+Oh and rememeber that if you want to choose an element with a class name then you need to write it like ".element". 
+
+If it was a HTMLElement then you can write it like "element"
