@@ -132,3 +132,5 @@ logo.alt = "Beautiful minimalist logo"
 
 
 
+// Data Attributes
+console.log(logo.dataset.versionNumber)

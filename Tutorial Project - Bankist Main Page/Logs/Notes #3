@@ -2,6 +2,7 @@ Logs for the style selection and the CSS designs done in the JavaScript file.
 
 Tutorials from Jonas.io
 
+##############################################################################################
 
 message.style.backgroundcolor = "color";
 
@@ -37,3 +38,17 @@ console.log(logo.getAttribute('designer'))
 Oh and rememeber that if you want to choose an element with a class name then you need to write it like ".element". 
 
 If it was a HTMLElement then you can write it like "element"
+
+
+NOTE that if a value is not found or present in the css, html which was defined in the js file then the result would be "undefined"
+
+element.dataset.versionNumber is a special case of a DOM selection. For handling data, it's called a data attribute.
+
+
+You can use the classes to add,remove,toggle or check if it "contains"
+
+
+
+add => add a new attribute
+remove => remove a attribute
+toogle => 
