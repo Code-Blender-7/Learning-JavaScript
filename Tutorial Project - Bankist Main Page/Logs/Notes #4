@@ -1,0 +1,34 @@
+After the studying of the behavior of the main website, It is time to work witht eh main website starting with the features first. 
+Did learned how the whole HTMLElements are selected and then they are edited in the javascript file. 
+
+However, I did found a quite number of class issues since the HTML script is not written by me. I be sure to fix them and try to include them in my log.
+
+################################################################################################ 
+
+THIS PROJECT IS NOT DONE ENTIRELY BY ME. THE STARTER FILES AND THE DESIGNS ARE ALL WORKS FROM jonas.io 
+
+ALL COPYRIGHT RESERVED BY jonas.io
+
+################################################################################################ 
+
+
+elements could be selected via a number of ways. They can all be selected by the
+ document.querySelector('element' )
+syntax. Also, they can be selected by using the 'getElementbyTagName', 'getElementByClassName' etc. etc.
+
+element.getBoundingClientRect() is a function that shows the true coordinates of the element on the user computer. 
+
+getBoundingClientRect() is also very responsive as well.
+
+
+use window.pageXOffset to find the scroll width from the screen.
+use window.pageYOffset to find the scroll height from the screen.
+
+
+[ SOME REVELENT lessons relating about the 'old school method of scrolling' were not taken within the logs ]
+
+Recently after working with the 'innerHTML', I found out some facts,
+the innerHTML doesn't work like a normal JavaScript line. It accepts only HTML syntax. That means that if you want to turn a statement into a multiline then what you have to do is to add
+the <br> statement. Not the /n statement. 
+
+
