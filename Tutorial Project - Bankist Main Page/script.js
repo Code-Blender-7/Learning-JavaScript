@@ -59,7 +59,7 @@ ALL SCRIPT AND WEBSITE RESOURCES ARE COPYRIGHTED BY Jonas Schmedtmann
 const message = document.createElement('div'); // Creating a div in the HTML [PROGRAMMED IN JS]
 message.classList.add('cookie-message') // Adding a class to the div  
 
-message.innerHTML = `We use cookies for improved functionality <br> And We serve no desert <button class="btn btn--close-cookie">Got it!</button>`
+message.innerHTML = `<center>We use cookies for improved functionality <br> And We serve no desert </center><button class="btn btn--close-cookie">Got it!</button>`
 
 
 header.before(message) // before the header
@@ -89,3 +89,20 @@ btnScrollTo.addEventListener('click', function(e) {
   section1.scrollIntoView({behavior: 'smooth'})
 })
 
+
+////////////////////////////////////////////////////////////////////
+////////////// RESEARCH ONLY
+
+const h1 = document.querySelector('h1') // Specific element
+
+const alertH1 = function(e) {
+  alert('addEventListener: It works')
+
+  h1.removeEventListener('mouseenter', alertH1)
+}
+
+
+h1.addEventListener('mouseenter', alertH1)
+
+
+setTimeout(() => message.innerHTML = `<center>We use cookies for improved functionality <br> And We serve no desert </center><button class="btn btn--close-cookie">NANI!</button>` , 6000)

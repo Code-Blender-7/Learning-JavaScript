@@ -1,0 +1,22 @@
+Logs for the style selection and the CSS designs done in the JavaScript file.
+
+Tutorials from Jonas.io
+
+##############################################################################################
+
+My expectations were correct. The innerHTML is capable to center the text. The new cookie message looks good to me too. 
+
+
+use the addEventListener command called 'mouseenter' to trigger an action whenever the mouse hovers over the HTMLElements
+
+You can also use the onmouseenter except of the addEventListener to trigger the action. 
+
+Syntax - 
+h1.onmouseenter = function(e) {
+  alert('onmouseenter: Great, you are reading the heading.')
+}
+
+
+Remember that addEventListener can have other functions from seperate variebles to trigger the action. 
+
+Like addEventListener, you can also use the removeEventListener to remove the HTMLElements from the website.
