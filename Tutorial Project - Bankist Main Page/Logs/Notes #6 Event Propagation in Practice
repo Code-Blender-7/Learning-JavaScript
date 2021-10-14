@@ -1,0 +1,43 @@
+After viewing the code in the HTML, i found out that the heading title at the center is created with different classes and attributes. 
+Perfect for the test of the Event Propagation. 
+
+//////////////////////////////
+
+
+Found out that if you attach a function to a class attribute then the any elements that are connected to that class node is triggered to respond. 
+
+
+The event occurs in the document root and then it 'travels down' to the target element. 
+
+The designing of the nav links are a bit interesting. 
+Their designing is like layers of one and another. the color of the nav__links cannot be seen since the color of the nav is changed.
+
+
+it's simple. 
+.nav is the parentNode of the .nav__links.
+.nav__links is the childNode of the .nav.
+
+Additional notes, 
+if you create a string then it cannot be called and perform it's action more than once. if you want to have a dynamic design, then be sure to use the functions. not the string.
+
+
+use the function of the addEventListener and use the syntax of the e.target to find the location of the element on the remote html. 
+
+the currentTarget is where the elements are currently located. i still didn't found out the difference between currentTarget and target. expect in the upcoming logs.
+
+if you hit the currentTarget on two elements, it is seen that they are also triggered. it's maybe because that they are the parentNode of the elements??
+
+to stop this behavior, we need to kill the bubbling phase. That also means... killing the event propagation. 
+use the syntax of e.stopPropagation on any ChildNodes to force their parentNodes to not behave.
+once it's triggered, the elements will not change their behavior which is both a good news and a bad news.
+
+In practice, it is a bad idea to stop the propagation. 
+
+To reboot the progapation, add a new value to the function of the addEventListerner and then the propagation is resumed. 
+
+Capturing is rarely used nowadays.
+
+
+
+
+World's big mystery solved. i guess.

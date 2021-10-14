@@ -1,0 +1,15 @@
+The capturing phase and the bubbling phase are explained in this note.
+
+Suppose that a user tries to trigger an action from the html website. In the computer prespective, questions arise that where is this "HTMLElememt" that has been triggered. What is the location? What is the role? How it has influence with the other elements. 
+
+The html elements that was triggered sends a response to the Javascript engine to behavior immediately. The javascript engine locates the htmlelement inside the DOM tree. 
+
+As mentioned, the DOM tree is where all the types of the HTMLElements are stored. The HTMLElements are searched over the DOM tree by the Javascript engine. After that, the engine finds the element. But it had to go though a quene of other HTMLElements that were containing the target element. Therefore, this concept is called the targetting phase of the JS engine where the htmlelement is found.
+
+The capturing element travels thought the parent elements. not the sibling elements. It is like the ascending order of the DOM tree. 
+
+
+Events can be targeted in the bubbling phase. Not all the elements have the capturing and the bubbling phase. Events can propagate from one place to another.
+
+
+

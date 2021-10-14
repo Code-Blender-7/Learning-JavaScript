@@ -20,3 +20,7 @@ h1.onmouseenter = function(e) {
 Remember that addEventListener can have other functions from seperate variebles to trigger the action. 
 
 Like addEventListener, you can also use the removeEventListener to remove the HTMLElements from the website.
+
+
+removeEventListener and addEventlistener of the same type can only happen once. 
+
