@@ -47,8 +47,8 @@ this project is all about experts adding funtionality to the project. Be sure to
 
 ALL SCRIPT AND WEBSITE RESOURCES ARE COPYRIGHTED BY Jonas Schmedtmann
 
-*/
 
+*/
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////// LECTURES
@@ -72,15 +72,12 @@ document.querySelector('.btn--close-cookie').addEventListener('click', function(
 
 
 // Styles
-
 message.style.backgroundColor = "#37383d"
 message.style.width = "120%"
 message.style.height = Number.parseFloat(getComputedStyle(message).height,10) + 20 + "px";
 
 
-
-
-//// Smooth Button Scrolling Animation
+//// Smooth Button Scrolling Animation - 'Learn More 🔽'
 
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1')
@@ -93,56 +90,72 @@ btnScrollTo.addEventListener('click', function(e) {
 ////////////////////////////////////////////////////////////////////
 ////////////// RESEARCH ONLY
 
-const h1 = document.querySelector('h1') // Specific element
+// const h1 = document.querySelector('h1') // Specific element
 
-const alertH1 = function(e) {
-  alert('addEventListener: It works')
+// const alertH1 = function(e) {
+//   alert('addEventListener: It works')
 
-  h1.removeEventListener('mouseenter', alertH1)
-}
-
-
-h1.addEventListener('mouseenter', alertH1)
+//   h1.removeEventListener('mouseenter', alertH1)
+// }
 
 
-setTimeout(() => message.innerHTML = `<center>We use cookies for improved functionality <br> And We serve no desert </center><button class="btn btn--close-cookie">NANI!</button>` , 6000)
+// h1.addEventListener('mouseenter', alertH1)
+
+
+// setTimeout(() => message.innerHTML = `<center>We use cookies for improved functionality <br> And We serve no desert </center><button class="btn btn--close-cookie">NANI!</button>` , 6000)
 
 
 
-// rgb(255,255,255)
+// // rgb(255,255,255)
 
-const randomInt = (min,max) => Math.floor(Math.random() * (max-min + 1) + min);
-const randomColor = () => `rgb(${randomInt(0,255)},${randomInt(0,255)},${randomInt(0,255)})`
+// const randomInt = (min,max) => Math.floor(Math.random() * (max-min + 1) + min);
+// const randomColor = () => `rgb(${randomInt(0,255)},${randomInt(0,255)},${randomInt(0,255)})`
 
-console.log(randomColor)
-
-
-// Selecting the event handlers 
-const nav__links = document.querySelectorAll('.nav__link')
-console.log(nav__links)
-
-document.querySelector('.nav__link').addEventListener('click', function(e) {
-  console.log("Linked")
-  this.style.backgroundColor = randomColor()
-  console.log("Link -", e.target)
-  console.log("Current Link -", e.currentTarget)  
-
-  // Stop the propagation.
-  e.stopPropagation()
-
-})
-
-document.querySelector('.nav__links').addEventListener("click", function(e) {
-  this.style.backgroundColor = randomColor()
-  console.log("Link -", e.target)
-  console.log("Current Link -", e.currentTarget)  
-
-})
+// console.log(randomColor)
 
 
-document.querySelector('.nav').addEventListener("click", function(e) {
-  this.style.backgroundColor = randomColor()
-  console.log("Link -", e.target)
-  console.log("Current Link -", e.currentTarget)  
-}, true)
+// // Selecting the event handlers 
+// const nav__links = document.querySelectorAll('.nav__link')
+// console.log(nav__links)
 
+// document.querySelector('.nav__link').addEventListener('click', function(e) {
+//   console.log("Linked")
+//   this.style.backgroundColor = randomColor()
+//   console.log("Link -", e.target)
+//   console.log("Current Link -", e.currentTarget)  
+
+//   // Stop the propagation.
+//   e.stopPropagation()
+
+// })
+
+// document.querySelector('.nav__links').addEventListener("click", function(e) {
+//   this.style.backgroundColor = randomColor()
+//   console.log("Link -", e.target)
+//   console.log("Current Link -", e.currentTarget)  
+
+// })
+
+
+// document.querySelector('.nav').addEventListener("click", function(e) {
+//   this.style.backgroundColor = randomColor()
+//   console.log("Link -", e.target)
+//   console.log("Current Link -", e.currentTarget)  
+// }, true)
+
+
+////////////////////////////////////////////////////
+///////
+
+
+//// Page Navbar Smooth Navigation
+
+ document.querySelectorAll('.nav__link').forEach(function(el){
+  el.addEventListener('click', function(e) {
+    e.preventDefault()
+    console.log("Linked")
+    const id = this.getAttribute('href')
+    console.log(id)
+    document.querySelector(id).scrollIntoView({behavior : "smooth"});
+  })
+ })

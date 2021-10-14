@@ -1,0 +1,14 @@
+The idea of adding Event delegation and using the page navigation.
+
+a href element's value has a nickname called anchor.
+if the user clicks it then the webview is navigated to the href value address.
+
+REMEMBER. You can't add a function to all the querySelectorAll at once.
+Use the forEach() and add a function that calls a addEventListerner to make it work.
+
+
+use the preventDefault to suppress the href anchor ceasing the default page navigation to not work.
+rememeber that preventDefault will disable the default page navigation. not the custom changed one.
+
+
+get the attribute name of any class or element by using the getAttribute(attribute) syntax.
