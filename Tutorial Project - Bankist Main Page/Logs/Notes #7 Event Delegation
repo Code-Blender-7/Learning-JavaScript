@@ -1,0 +1,25 @@
+The concept of the Event Delegation.
+---------------------------------------------------------------------
+
+
+The Event Delegation is a concept method of writing code where javascript can find and add eventlisteners to specific specified elements more efficiently. 
+
+the event delegation itself is a technique to improve website performance and capable to handle massive data flow.
+using the concept of the Event delegation, people can more efficiently add features with better system performance.
+
+
+Event Delegations solely requires 2 things.
+1. The childNodes of the elements have the same parentNode where they have originated from.
+2. The childNodes have the condition of the parentNode.
+
+Simply - 
+1. The Targetting Phase
+2. The Matching Phase
+
+Now the two phases of the Event Delegation has been explained - 
+---------------------------------------------------------
+THE TARGETTING PHASE requires the use of finding the common parentNode that all the childNodes has. It also means to find out the only common similiar node that all the childNodes have originated from. The targetting Phase takes place in the html file.
+
+THE MATCHING PHASE requires the use of the e.target where the element's class element or 'parentNode's childNodes' has been triggered. the result of the e.target is the element's location that has been specified in the HTML file.
+e.target may have other response if there were such elements to detect that were created in the javascript file indirectly to the html. However, this 'irregular response' has not been tested. To complete the matching phase, we can also use the .contains method to find out if the node has the class requirements.
+
