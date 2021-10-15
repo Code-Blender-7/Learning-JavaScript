@@ -12,3 +12,17 @@ rememeber that preventDefault will disable the default page navigation. not the 
 
 
 get the attribute name of any class or element by using the getAttribute(attribute) syntax.
+
+
+adding more eventhandler to a large number of events causes less performance.
+
+that's where the event delegation takes place.
+
+view to the Notes #7 Event Delegation text note 
+
+
+
+
+use the function.target.classList.contains('class') to find out if the class element has the childnode class.
+ 
+always use the e.preventDefault in case that you are adding your own behavior and overriding the default
