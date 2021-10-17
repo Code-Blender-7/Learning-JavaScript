@@ -1,0 +1,42 @@
+GOD, this was the most confusing element integetion when everywhere, all the things are going sideways.
+
+The work is to focus on the section-2 of the website. we need to intergate a tabbed component. the basic css and the html are completed. we just need to trigger it. '
+
+
+good news, it is possible to trigger this.
+bad news, i got no idea on how to trigger it. 
+
+honestly, my brain is toasted as crap right now. 
+
+first. we need to select what we need. 
+
+the tab contents, the tab components, the tabs etc. 
+
+after that, we need to find a new to add, remove the tabs so that all the buttons doesn't light up at the same time. the css has something to do with that. i guess.
+
+then everytime the tab goes on, the contents of that tab is displayed. 
+we wll use a class to add and reveal the tabs easily. 
+
+Below here is the method that was used to add the tabbed component.
+
+////////////////////////////////////////////////////////////////////////
+//////////////////////
+
+To add the component, we need to find out the relationship between the classes. thanks to DOM traversing, we were able to select the element.
+
+To add the classlist, it is found that you can keep adding the classes to no end.
+
+it's quite a flaw to me but i bear with it. 
+
+selecting the class and adding them was the easy task. triggering the moments was not. 
+for that, we need to find out the closest childNode to the parentNode. The closest child element gets added with the classList required to trigger the element. 
+
+turns out, we need to first remove the activation class from all the class and then add them back again to avoid all the tabs to stay active.
+
+after that, we need to activate the content. for that, we need to find which content are in line with which tab. we can find this by using the dataset method. 
+
+i really thought that this one is not worth it. Turns out, it saved a lot of lines. guess, i just have to learn the method of how does it work.
+
+add the remove-add procedure and then the component should be completed. 
+if the conents are not removed properly then the contents will end up in the bottom.
+

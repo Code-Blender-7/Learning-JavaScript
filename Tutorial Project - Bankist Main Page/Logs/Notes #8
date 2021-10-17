@@ -1,0 +1,61 @@
+// DOM Traversing 
+
+DOM Traversing or simply the travelling between the DOM Elements that are located in the HTML Page.
+
+
+use the childNodes syntax command of the DOM in the JavaScript in order to print out all the elements that the nodes has inside the parentNode. 
+
+This includes the comments, text, span.highlight, classes, breaks. 
+hell, every single type of the elements that are childNodes class has gets it displayed.
+
+Syntax - 
+console.log(parentNode_class.childNodes)
+
+
+use the .childNodes to display all the details.
+use the .children to display the major elements.
+
+all the childNodes are always inside the parentNodes.
+
+
+use the firstElementChild and the lastElementChild to select the first Element or the second Element from the HTMLCollections of the childNodes. 
+
+as always, you can find the HTMLCollection by using the .children syntax.
+
+firstElementChild and lastElementChild are all often used as the concept of targetting the elements of the childNode more accurately.
+
+
+Similarly,
+Use the .parentNode and the .parentElement to trigger the parentElement of the element. It actually also means going upwards on the DOM Tree.
+
+
+Suppose that there are multiple types of elements of the same type all to the same parentNode. And you wanted to select the closest element to the parentNode. Closest element also means the first element of the parentNode in occurance of others. 
+In javascript, you can select that by using the childNode.closest('parentNode').
+
+closest elemet is like the opposite of the querySelector.
+
+
+Of course that the HTMLElemenet doesn't always have one class. There could be more separate classes that are not of the same type. To select them, we need to use the previousElementSibling which means the previous element of the childNode. Similarly, nextElementSibling means the next child element that comes after that. 
+
+remember that you can use the element.parentElement.children to printout all the childNodes of the parentNode.
+
+
+URGENT.
+
+[...h1.parentElement.children].forEach(function(e) {
+  if (e !== h1) {
+    e.style.backgroundColor = "red"
+  }
+})
+
+This syntax doesn't work. 
+
+take the list into a variable and then print it out
+
+const elements = [...h1.parentElement.children]
+
+elements.forEach(function(e) {
+  if (e !== h1) {
+    e.style.backgroundColor = "red"
+  }
+})
