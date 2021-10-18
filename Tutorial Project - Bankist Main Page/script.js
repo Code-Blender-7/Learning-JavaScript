@@ -1,11 +1,13 @@
+'use strict';
+
 /*
 * @Author: Climax
 * Tutorial : Jonas.io
 * @Date:   2021-10-18 08:01:19
 * @Last Modified by:   Climax
-* @Last Modified time: 2021-10-18 18:35:53
+* @Last Modified time: 2021-10-18 20:47:31
 */
-'use strict';
+
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
@@ -13,6 +15,7 @@ const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const header = document.querySelector('.header')
 const title = document.querySelector('title')
+
 
 ///////////////////////////////////////
 // Modal window
@@ -55,7 +58,6 @@ ALL SCRIPT AND WEBSITE RESOURCES ARE COPYRIGHTED BY Jonas Schmedtmann
 
 
 */
-
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////// LECTURES
 
@@ -129,6 +131,8 @@ tabsContainer.addEventListener("click" , function(e) {
 //// Navigation bar - toggle button fade in, fate out while hover
 
 const nav = document.querySelector(".nav")
+// image
+const nav__logo = document.querySelector(".nav__logo")
 console.log(nav.children)
 
 
@@ -166,6 +170,7 @@ nav.addEventListener("mouseout", function(e) {
     logo.style.opacity = 1
   }
 })
+
 
 
 ////////////////////////////////////////////////////
