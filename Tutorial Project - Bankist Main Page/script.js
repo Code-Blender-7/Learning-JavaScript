@@ -1,3 +1,10 @@
+/*
+* @Author: Climax
+* Tutorial : Jonas.io
+* @Date:   2021-10-18 08:01:19
+* @Last Modified by:   Climax
+* @Last Modified time: 2021-10-18 18:35:53
+*/
 'use strict';
 
 const modal = document.querySelector('.modal');
@@ -7,7 +14,6 @@ const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const header = document.querySelector('.header')
 const title = document.querySelector('title')
 
-document.documentElement.style.setProperty('--color-primary', 'violet')
 ///////////////////////////////////////
 // Modal window
 
@@ -58,23 +64,22 @@ ALL SCRIPT AND WEBSITE RESOURCES ARE COPYRIGHTED BY Jonas Schmedtmann
 
 const message = document.createElement('div'); // Creating a div in the HTML [PROGRAMMED IN JS]
 message.classList.add('cookie-message') // Adding a class to the div  
-
 message.innerHTML = `<center>We use cookies for improved functionality <br> And We serve no desert </center><button class="btn btn--close-cookie">Got it!</button>`
-
 
 header.before(message) // before the header
 
-
+// add something to pop trigger
 document.querySelector('.btn--close-cookie').addEventListener('click', function() {
   message.remove()
   title.textContent = "𝙱𝚊𝚗𝚔𝚒𝚜𝚝 | 𝚆𝚑𝚎𝚗 𝙱𝚊𝚗𝚔𝚒𝚗𝚐 𝚖𝚎𝚎𝚝𝚜 𝙼𝚒𝚗𝚒𝚖𝚊𝚕𝚒𝚜"
 })
 
-
-// Styles
+// Message popup design 
 message.style.backgroundColor = "#37383d"
 message.style.width = "120%"
 message.style.height = Number.parseFloat(getComputedStyle(message).height,10) + 20 + "px";
+
+
 
 
 //// Smooth Button Scrolling Animation - 'Learn More 🔽'
@@ -100,12 +105,6 @@ document.querySelector(".nav__links").addEventListener('click', function(e) {
 
 //// Enabling the Tabbed Component - 
 
-
-
-////////////////////////////////////////////////////////////////////
-////////////// RESEARCH ONLY
-
-
 const tabs = document.querySelectorAll(".operations__tab");
 const tabsContainer = document.querySelector(".operations__tab-container");
 const tabscontent = document.querySelectorAll(".operations__content");
@@ -117,13 +116,58 @@ tabsContainer.addEventListener("click" , function(e) {
   tabs.forEach(t => t.classList.remove("operations__tab--active"))
   clicked.classList.add('operations__tab--active')
 
-  // activate content area
+  // activate content area -  
   tabscontent.forEach(c => c.classList.remove("operations__content--active"))
   document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add("operations__content--active")
 })
 
 
+
+////////////////////////////////////////////////////////////////////
+////////////// RESEARCH ONLY
+
+//// Navigation bar - toggle button fade in, fate out while hover
+
+const nav = document.querySelector(".nav")
+console.log(nav.children)
+
+
+nav.addEventListener('mouseover' , function(e) {
+  if (e.target.classList.contains("nav__link")) {
+    const link_nav = e.target
+    const siblings = link_nav.closest(".nav").querySelectorAll(".nav__link") // Close to the parentNode
+    const logo = link_nav.closest(".nav").querySelector("img")
+
+    // styles
+    link_nav.style.color = 'green'
+
+    // behavior
+    siblings.forEach(el => {
+      if (el !== link_nav)  {
+        el.style.opacity = 0.5;
+      }
+    });
+    logo.style.opacity = 0.5
+  }
+})
+
+
+nav.addEventListener("mouseout", function(e) {
+  if (e.target.classList.contains("nav__link")) {
+    const link_nav = e.target
+    const siblings = link_nav.closest(".nav").querySelectorAll(".nav__link") // Close to the parentNode
+    const logo = link_nav.closest(".nav").querySelector("img")
+
+    link_nav.style.color = "black"
+
+    siblings.forEach(el => {
+      if (el !== link_nav) el.style.opacity = 1;
+    });
+    logo.style.opacity = 1
+  }
+})
+
+
 ////////////////////////////////////////////////////
 ///////
-
 
