@@ -23,3 +23,12 @@ THE TARGETTING PHASE requires the use of finding the common parentNode that all 
 THE MATCHING PHASE requires the use of the e.target where the element's class element or 'parentNode's childNodes' has been triggered. the result of the e.target is the element's location that has been specified in the HTML file.
 e.target may have other response if there were such elements to detect that were created in the javascript file indirectly to the html. However, this 'irregular response' has not been tested. To complete the matching phase, we can also use the .contains method to find out if the node has the class requirements.
 
+
+
+################################################################################################ 
+
+THIS PROJECT IS NOT DONE ENTIRELY BY ME. THE STARTER FILES AND THE DESIGNS ARE ALL WORKS FROM jonas.io 
+
+ALL COPYRIGHT RESERVED BY Jonas Schmedtmann
+
+################################################################################################ 

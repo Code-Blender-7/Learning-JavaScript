@@ -26,3 +26,13 @@ view to the Notes #7 Event Delegation text note
 use the function.target.classList.contains('class') to find out if the class element has the childnode class.
  
 always use the e.preventDefault in case that you are adding your own behavior and overriding the default
+
+
+
+################################################################################################ 
+
+THIS PROJECT IS NOT DONE ENTIRELY BY ME. THE STARTER FILES AND THE DESIGNS ARE ALL WORKS FROM jonas.io 
+
+ALL COPYRIGHT RESERVED BY Jonas Schmedtmann
+
+################################################################################################ 

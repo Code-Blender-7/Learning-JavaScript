@@ -5,7 +5,7 @@
 * Tutorial : Jonas.io
 * @Date:   2021-10-18 08:01:19
 * @Last Modified by:   Climax
-* @Last Modified time: 2021-10-18 20:47:31
+* @Last Modified time: 2021-10-19 13:29:45
 */
 
 
@@ -46,6 +46,8 @@ document.addEventListener('keydown', function (e) {
     closeModal();
   }
 });
+
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////// DISCLAMER
@@ -124,52 +126,33 @@ tabsContainer.addEventListener("click" , function(e) {
 })
 
 
+//// Navigation bar - toggle button fade in, fate out while hover
+
+const nav = document.querySelector(".nav")
+
+const change_opacity = function(e, opacity, color) {
+
+    if (e.target.classList.contains("nav__link")) {
+    const link_nav = e.target
+    const siblings = link_nav.closest(".nav").querySelectorAll(".nav__link") // Close to the parentNode
+    const logo = link_nav.closest(".nav").querySelector("img")
+
+    link_nav.style.color = color
+    siblings.forEach(el => {
+      if (el !== link_nav) el.style.opacity = opacity;
+    });
+    logo.style.opacity = opacity;
+  }
+}
+
+nav.addEventListener("mouseover", e => {change_opacity(e, 0.5, "green")})
+nav.addEventListener("mouseout", e => {change_opacity(e, 1.0, "black")})
+
+
 
 ////////////////////////////////////////////////////////////////////
 ////////////// RESEARCH ONLY
 
-//// Navigation bar - toggle button fade in, fate out while hover
-
-const nav = document.querySelector(".nav")
-// image
-const nav__logo = document.querySelector(".nav__logo")
-console.log(nav.children)
-
-
-nav.addEventListener('mouseover' , function(e) {
-  if (e.target.classList.contains("nav__link")) {
-    const link_nav = e.target
-    const siblings = link_nav.closest(".nav").querySelectorAll(".nav__link") // Close to the parentNode
-    const logo = link_nav.closest(".nav").querySelector("img")
-
-    // styles
-    link_nav.style.color = 'green'
-
-    // behavior
-    siblings.forEach(el => {
-      if (el !== link_nav)  {
-        el.style.opacity = 0.5;
-      }
-    });
-    logo.style.opacity = 0.5
-  }
-})
-
-
-nav.addEventListener("mouseout", function(e) {
-  if (e.target.classList.contains("nav__link")) {
-    const link_nav = e.target
-    const siblings = link_nav.closest(".nav").querySelectorAll(".nav__link") // Close to the parentNode
-    const logo = link_nav.closest(".nav").querySelector("img")
-
-    link_nav.style.color = "black"
-
-    siblings.forEach(el => {
-      if (el !== link_nav) el.style.opacity = 1;
-    });
-    logo.style.opacity = 1
-  }
-})
 
 
 

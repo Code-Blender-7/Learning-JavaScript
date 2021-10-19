@@ -45,4 +45,13 @@ DOM API are broken up into several types of nodes. JavaScript uses the Nodes to 
 
 
 In a document, all the other that doesn't need to interact with the DOM and HTML can be abstraction or irrevelent. 
-  
+
+
+
+################################################################################################ 
+
+THIS PROJECT IS NOT DONE ENTIRELY BY ME. THE STARTER FILES AND THE DESIGNS ARE ALL WORKS FROM jonas.io 
+
+ALL COPYRIGHT RESERVED BY Jonas Schmedtmann
+
+################################################################################################ 

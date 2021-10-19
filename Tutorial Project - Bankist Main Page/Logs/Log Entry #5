@@ -1,6 +1,5 @@
 Logs for the style selection and the CSS designs done in the JavaScript file.
 
-Tutorials from Jonas.io
 
 ##############################################################################################
 
@@ -24,3 +23,14 @@ Like addEventListener, you can also use the removeEventListener to remove the HT
 
 removeEventListener and addEventlistener of the same type can only happen once. 
 
+
+
+
+
+################################################################################################ 
+
+THIS PROJECT IS NOT DONE ENTIRELY BY ME. THE STARTER FILES AND THE DESIGNS ARE ALL WORKS FROM jonas.io 
+
+ALL COPYRIGHT RESERVED BY Jonas Schmedtmann
+
+################################################################################################ 

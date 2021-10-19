@@ -3,13 +3,6 @@ Did learned how the whole HTMLElements are selected and then they are edited in 
 
 However, I did found a quite number of class issues since the HTML script is not written by me. I be sure to fix them and try to include them in my log.
 
-################################################################################################ 
-
-THIS PROJECT IS NOT DONE ENTIRELY BY ME. THE STARTER FILES AND THE DESIGNS ARE ALL WORKS FROM jonas.io 
-
-ALL COPYRIGHT RESERVED BY jonas.io
-
-################################################################################################ 
 
 
 elements could be selected via a number of ways. They can all be selected by the
@@ -32,3 +25,11 @@ the innerHTML doesn't work like a normal JavaScript line. It accepts only HTML s
 the <br> statement. Not the /n statement. 
 
 
+
+################################################################################################ 
+
+THIS PROJECT IS NOT DONE ENTIRELY BY ME. THE STARTER FILES AND THE DESIGNS ARE ALL WORKS FROM jonas.io 
+
+ALL COPYRIGHT RESERVED BY Jonas Schmedtmann
+
+################################################################################################ 

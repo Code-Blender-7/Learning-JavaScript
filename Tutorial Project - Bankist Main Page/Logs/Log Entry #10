@@ -1,0 +1,28 @@
+This log is dedicated to the latest update of the change log on Oct 19th 2021 regarding about the Passing of argument to event handlers. 
+
+The update was about the menu fade in and out. 
+
+Here, if you try to add a class to a parentNode connected to a number of childNodes then the other childNodes would be affected. 
+Also, the effect like the transistion is neutrilized in this process.
+
+Mostly, the work was about there being to refactor the code. 
+
+Turns out, the tutorial added the use of the 'bind' method. it was used as an alternative to reduce the code. However, it raised confussion and i was unable to 
+completely add new arguments to the whole functions. 
+
+In the end, I had to dissable the bind method and switch to the traditional arrow functions for it to work. 
+
+
+The actions of this log is found in the section   ->  //// Navigation bar - toggle button fade in, fate out while hover
+
+Meanwhile I just continue my pace then.
+
+
+
+################################################################################################ 
+
+THIS PROJECT IS NOT DONE ENTIRELY BY ME. THE STARTER FILES AND THE DESIGNS ARE ALL WORKS FROM jonas.io 
+
+ALL COPYRIGHT RESERVED BY Jonas Schmedtmann
+
+################################################################################################ 
