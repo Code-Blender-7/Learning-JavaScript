@@ -5,7 +5,7 @@
 * Tutorial : Jonas.io
 * @Date:   2021-10-18 08:01:19
 * @Last Modified by:   Climax
-* @Last Modified time: 2021-10-19 13:29:45
+* @Last Modified time: 2021-10-20 22:23:57
 */
 
 
@@ -68,15 +68,9 @@ ALL SCRIPT AND WEBSITE RESOURCES ARE COPYRIGHTED BY Jonas Schmedtmann
 
 const message = document.createElement('div'); // Creating a div in the HTML [PROGRAMMED IN JS]
 message.classList.add('cookie-message') // Adding a class to the div  
-message.innerHTML = `<center>We use cookies for improved functionality <br> And We serve no desert </center><button class="btn btn--close-cookie">Got it!</button>`
+message.innerHTML = `<center>We use cookies for improved functionality <br> And We serve no desert. </center><button class="btn btn--close-cookie">Press this to enable sticky nav!</button>`
 
-header.before(message) // before the header
-
-// add something to pop trigger
-document.querySelector('.btn--close-cookie').addEventListener('click', function() {
-  message.remove()
-  title.textContent = "𝙱𝚊𝚗𝚔𝚒𝚜𝚝 | 𝚆𝚑𝚎𝚗 𝙱𝚊𝚗𝚔𝚒𝚗𝚐 𝚖𝚎𝚎𝚝𝚜 𝙼𝚒𝚗𝚒𝚖𝚊𝚕𝚒𝚜"
-})
+header.before(message)
 
 // Message popup design 
 message.style.backgroundColor = "#37383d"
@@ -154,7 +148,30 @@ nav.addEventListener("mouseout", e => {change_opacity(e, 1.0, "black")})
 ////////////// RESEARCH ONLY
 
 
+//// Sticky Navigation
 
+console.log(window.scrollX) // the current view of the website
+
+const sec1InitialCoords = section1.getBoundingClientRect()
+console.log(sec1InitialCoords)
+
+
+// add something to pop trigger
+document.querySelector('.btn--close-cookie').addEventListener('click', function() {
+  message.remove()
+  title.textContent = "𝙱𝚊𝚗𝚔𝚒𝚜𝚝 | 𝚆𝚑𝚎𝚗 𝙱𝚊𝚗𝚔𝚒𝚗𝚐 𝚖𝚎𝚎𝚝𝚜 𝙼𝚒𝚗𝚒𝚖𝚊𝚕𝚒𝚜"
+
+  window.addEventListener("scroll", function() {
+
+  if (window.scrollY > sec1InitialCoords.top) {
+    nav.classList.add("sticky") 
+  } else {
+    nav.classList.remove("sticky")
+  }
+});
+
+
+})
 
 ////////////////////////////////////////////////////
 ///////
