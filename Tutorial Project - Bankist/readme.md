@@ -7,6 +7,9 @@ The project is part of a JavaScript course called "*The  Complete Javascript Cou
 <b>PREVIEW - </b>
 
 ![image](https://github.com/Code-Blender-7/Learning-JavaScript/blob/main/Tutorial%20Project%20-%20Bankist/Images%20for%20readme/FD5EbwBALA.png)
+<i>Username - js</i> \
+<i>Password - 1111</i>
+
 
 The project itself can be found on the 11th section of the mentioned course.
 
