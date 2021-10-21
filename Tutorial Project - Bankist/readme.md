@@ -6,7 +6,7 @@ The project is part of a JavaScript course called "*The  Complete Javascript Cou
 
 <b>PREVIEW - </b>
 
-![image](Images for readme/FD5EbwBALA.png)
+![image](https://github.com/Code-Blender-7/Learning-JavaScript/blob/main/Tutorial%20Project%20-%20Bankist/Images%20for%20readme/FD5EbwBALA.png)
 
 The project itself can be found on the 11th section of the mentioned course.
 
@@ -19,7 +19,7 @@ To ensure the original author's authencitity, no code nor comment on the index.h
 ## 2. Structure of the Project-
 Below is a map that shows the functionality layout of the project. This map is created by *Schmedtmann*  during the course. 
 
-![Map layout](Images for readme/Bankist-flowchart.png)
+![Map layout](https://github.com/Code-Blender-7/Learning-JavaScript/blob/main/Tutorial%20Project%20-%20Bankist/Images%20for%20readme/Bankist-flowchart.png)
 
 //////////////////////////////////////////////////////////
 
