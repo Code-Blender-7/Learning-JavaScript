@@ -4,6 +4,10 @@ Bankist is a web development tutorial project.
 
 The project is part of a JavaScript course called "*The  Complete Javascript Course: From Zero to Expert*" made by [Jonas Schmedtmann](https://www.udemy.com/user/jonasschmedtmann/).
 
+<b>PREVIEW - </b>
+
+![image](Images for readme/FD5EbwBALA.png)
+
 The project itself can be found on the 11th section of the mentioned course.
 
 According to the course, the index.html and style.css were created by default by Jonas where the script.js is what the enrolled developers have to create to make the website be functional from the buildup. 
@@ -12,9 +16,10 @@ To ensure the original author's authencitity, no code nor comment on the index.h
 
 //////////////////////////////////////////////////////////
 
-## 2. Structure of the Project- 
+## 2. Structure of the Project-
 Below is a map that shows the functionality layout of the project. This map is created by *Schmedtmann*  during the course. 
-![Map layout](https://github.com/Code-Blender-7/Learning-JavaScript/blob/main/Tutorial%20Project%20-%20Bankist/~readme_folder_DATA/Bankist-flowchart.png?raw=true)
+
+![Map layout](Images for readme/Bankist-flowchart.png)
 
 //////////////////////////////////////////////////////////
 
@@ -37,7 +42,7 @@ Like -
 The bankist can also do other stuff like display IN's and OUT's of the transaction and as well as determine the interest rate of each transactions. 
 By the word "*transactions*", I meant the additions and subtractions of the movement list. 
 
-### <u>Modified functions -</u> 
+### <u>Modified functions -</u>
 <u>The functions were modified to a scale where users would think that this is a complete project</u> -  
 I added numerous changes like - 
 1. Highlight INs and OUTs on the movements if clicked on the INs or OUTs label.

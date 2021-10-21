@@ -1,0 +1,52 @@
+
+This log entry is about the intersection observer API or IO.API as i like to call it. 
+
+
+
+Declare the IO.API by creating a new variable 'new IntersectionObserver()'. Be sure to contain it in a variable.
+
+execuete it by using variable.observe(HTMLElement Class)
+
+the IO.API requires two arguments nicknamed observerCallBack, observerOptions
+
+
+observerOptions (Observer Options) - Specify the conditions and settings of interception. 
+///////
+=> This variable argument is a dict that contains a number of values such as - 
+1. (root): The root element which is used for intersecting the target element in the window of the HTML page.
+2. (threshold): A value that is described in percentage to determine how much of the information flow are to be recorded.
+
+
+observerCallBack (Observer Call back) - Respond each time of interception.
+///////
+=> this one is a function that is responsible for printing out the entries of the interception.  the result is a dict composed of informations. Requires two arguments called entries, observer
+
+
+
+intersectingRatio is equal to the threshold that has been defined. It determines by how much value is the element from the intersection.
+
+IsIntersecting is a value that responds a bool. it is used for the purpose of printing if the element has reached the target or not. If the intersectingRatio is equal to the threshold then the IsIntersecting would be True. Else, False.
+
+This is the gold one here. 
+
+the IO.API is capable to printout of there was an intersection between two or more elements.
+
+Suppose that the first element is Windows and the second element is the section class, if the following were given as parameters then the whole IO.API will track the website. 
+
+windows means our view of the HTML page. that means if the window crosses the section, a record of interception entry would be console logged automatically. Until  that, the IO.API will not say that it is intercepted in a bool. the log would technically say false when it crosses from sections to sections of the nodes. 
+
+It is better because it would only respond when the event condition is triggered. Until that, it would not happen. VERY CONVINIENT TO USE.
+
+
+This research log is not perfect yet. expect that there will be a development sooner or later.
+
+
+
+
+################################################################################################ 
+
+THIS PROJECT IS NOT DONE ENTIRELY BY ME. THE STARTER FILES AND THE DESIGNS ARE ALL WORKS FROM jonas.io 
+
+ALL COPYRIGHT RESERVED BY Jonas Schmedtmann
+
+################################################################################################ 
