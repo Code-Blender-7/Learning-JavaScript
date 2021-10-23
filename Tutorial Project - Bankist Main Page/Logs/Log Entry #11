@@ -1,0 +1,22 @@
+This log is regarded of adding and learning how to add the sticky note to the main website. 
+
+
+
+I started to work with the main website to see what is there to be lacking. Turns out, Jonas was started to show how to add the Intersection Observation API to the main website. 
+
+the first thing that came to my mind was that does javascript can also import API?
+i didn't get the full details at first. but it looked like Javascript already was carrying the main API before. That is a first for me. 
+
+After adding the API was the easy part. The API can with a lot of features. I think that this is a convinient way to depend rather than getting the coordinates from the window feature. 
+
+After that is all done, I decided to add a logo shortcut and then also decided that I should also depend on the process of the IO.API later on.
+
+
+
+################################################################################################ 
+
+THIS PROJECT IS NOT DONE ENTIRELY BY ME. THE STARTER FILES AND THE DESIGNS ARE ALL WORKS FROM jonas.io 
+
+ALL COPYRIGHT RESERVED BY Jonas Schmedtmann
+
+################################################################################################ 
