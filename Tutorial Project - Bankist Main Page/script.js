@@ -5,7 +5,7 @@
 * Tutorial : Jonas.io
 * @Date:   2021-10-18 08:01:19
 * @Last Modified by:   Climax
-* @Last Modified time: 2021-10-21 19:26:15
+* @Last Modified time: 2021-10-23 13:22:23
 */
 
 
@@ -148,24 +148,6 @@ nav.addEventListener("mouseout", e => {change_opacity(e, 1.0, "black")})
 
 
 
-////////////////////////////////////////////////////////////////////
-////////////// RESEARCH ONLY
-
-
-//// Sticky Navigation
-
-// console.log(window.scrollX) // the current view of the website
-
-const sec1InitialCoords = section1.getBoundingClientRect()
-// console.log(sec1InitialCoords)
-
-
-// add something to pop trigger
-document.querySelector('.btn--close-cookie').addEventListener('click', function() {
-  message.remove()
-  title.textContent = "𝙱𝚊𝚗𝚔𝚒𝚜𝚝 | 𝚆𝚑𝚎𝚗 𝙱𝚊𝚗𝚔𝚒𝚗𝚐 𝚖𝚎𝚎𝚝𝚜 𝙼𝚒𝚗𝚒𝚖𝚊𝚕𝚒𝚜"
-})
-
 //// Sticky Navigation : Intersection Observer API
 
 
@@ -183,7 +165,6 @@ const stickyNavOptions = {
 
 const stickyNavCallBack = function(entries) {
   const [entry] = entries
-  console.log(entry)
   if (!entry.isIntersecting) nav.classList.add("sticky") 
   else nav.classList.remove("sticky")
 }
@@ -192,6 +173,17 @@ const headerObserver = new IntersectionObserver(stickyNavCallBack, stickyNavOpti
 headerObserver.observe(header)
 
 
+
+////////////////////////////////////////////////////////////////////
+////////////// RESEARCH ONLY
+
+const nav_logo = document.querySelector(".nav__logo")
+
+console.log(nav_logo)
+
+nav_logo.addEventListener('click', function(e) {
+  header.scrollIntoView({ behavior : "smooth" })
+})
 ////////////////////////////////////////////////////
 ///////
 
