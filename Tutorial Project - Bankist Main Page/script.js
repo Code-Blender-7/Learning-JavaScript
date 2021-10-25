@@ -5,7 +5,7 @@
 * Tutorial : Jonas.io
 * @Date:   2021-10-18 08:01:19
 * @Last Modified by:   Climax
-* @Last Modified time: 2021-10-25 09:42:08
+* @Last Modified time: 2021-10-25 19:05:08
 */
 
 
@@ -189,7 +189,7 @@ const revealSection = function(entries, observer) {
   const [entry] = entries
   if (entry.isIntersecting) entry.target.classList.remove("section--hidden")
   if (allSections.forEach(cl => !cl.classList.contains('section--hidden'))) observer.unobserve(entry)
-}
+};
 
 const sectionObserver = new IntersectionObserver(revealSection, {
   root: null,
@@ -204,6 +204,31 @@ allSections.forEach(function(sections) {
 ////////////////////////////////////////////////////////////////////
 ////////////// RESEARCH ONLY
 
+// Image loading 
+
+const imgTargets = document.querySelectorAll('img[data-src]')
+console.log(imgTargets)
+
+
+const loadImage = function(entries, observer) {
+  const [entry] = entries;
+  console.log(entry)
+
+  entry.target.src = entry.target.dataset.src // replace the lazy data-src with the target's dataset src.
+  
+  entry.target.addEventListener('load' , function() {
+    entry.target.classList.remove('lazy-img')
+  })
+  observer.unobserve(entry.target)
+};
+
+const imageObserver = new IntersectionObserver(loadImage, {
+  root : null,
+  threshold: 0
+});
+
+
+imgTargets.forEach(image => imageObserver.observe(image))
 
 
 ////////////////////////////////////////////////////

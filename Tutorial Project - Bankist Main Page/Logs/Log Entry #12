@@ -1,0 +1,34 @@
+Oh this is going to be a good one. 
+
+This log is dedicated to the implementation of the feature of fading and revealing the sections that appears whenever the user the user scrolls though them. 
+
+
+To hide the sections requires the use of a CSS classlist called the 'section--hidden'. I might as well change it's name sooner or later for adding design feature purposes thou it is not confirmed for the time being. 
+
+section--hidden class also handles the fade animation. Damn, I really need to learn the CSS. if this section is removed then the fade out goes fade in and done!
+
+Note that you should add it directly to HTML file. not by the JS file because if you do then you will see section fading right after you restart the website which is a bad performance.
+
+
+The plan is to do this by using IO.API 
+
+If we were to track the window's coordinates then maybe we can make some work get done. 
+
+
+//////////////////////////////////////////////
+
+
+Okay so.. that was surprisingly easy. 
+
+Turns out that the IO.API actually observe an element when it comes to the range. That fixes everything i think.
+
+I decided to create a logic that would force the observer to stop observing if all the sections doesn't have the section--hidden.
+
+That was kinda hard to make the forEach method work for all the selected sections. It works in the end and that is all that it mattered.
+
+Also for the extra, I tried to improve the performance of the website. 
+I realized that the animations may not work properly because IO.API couldn't detect the elements when the page refreshed. For that reason, I decided to refresh the page from the top allowing the API to kick back in. 
+
+Used a onbeforeunload to do the trick. god that was hard.
+
+Perhaps in the future, i may add a CSS that displays a modal of a loading animation until the website is completely refreshed. That requires a lot of work but I try to see what I can do.

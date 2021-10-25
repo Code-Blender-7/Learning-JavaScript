@@ -1,0 +1,13 @@
+This log is dedicated the study of the technique of Lazy Image. 
+
+
+The lazy images... well... is a non-standerd HTML??
+
+Everytime that you add a image to the HTML causes the whole browser to load even slower. The effects aren't that visible but you can start seeing them in poor performance devices.
+
+That is a lotsome to say i think.
+
+Lazy images are a kind of a trick that many users falls into. The concept of the Lazy images is to replace a low resolution image with a high resolution image of the same image. 
+
+that is a trick that could be done in the addEventListener. 
+I be using the IO.API to do this..

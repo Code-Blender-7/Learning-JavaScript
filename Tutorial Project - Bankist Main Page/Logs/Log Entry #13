@@ -1,0 +1,39 @@
+This log is dedicated to the implementation and the study of the technique of Lazy Image. 
+Another log may be made for the explanation and the reviews of the lazy image method.
+
+/// 
+
+I thought that the common approch would be to add a eventListener to all the image classes if they have the same classlist attribute.
+
+But as i learned that going ahead far could be a bad idea. 
+
+Jonas said that Lazy images is a good method to add the concept of 'beauty'.
+
+the images are already added with a css that does a blur filter on it. That is kinda cool. 
+
+It is a good idea to add these with using the concept of the IO.API
+
+There were obsticles along the way like finding out which images are to be lazy loaded and which not. 
+
+The first approach of mine included that i would add a attribute manually on the HTML and use that attribute to find out the blur. 
+
+The second approach was to create a function that passes a condition of 'applicable sections' and use that concept to create the result.
+
+Jonas followed the concept of the data-scr property. That was kinda unexpected of mine predict that but it would work in the end.
+God knows what else can HTML do...
+
+
+NOTE!
+
+whenever the root is set to null mean teh entire view port
+
+IO.API found out that the elements are already lazy images by default. that means that they are of the poor quality. which as i suspected that the html is default showing the low quality images.
+
+
+Jonas did the upside down. the target had the scr called target.src 
+he changed them to target.dataset.src meaning that all the current entry targets are called to their classlist dataset source. 
+
+
+so far, the website's images were already working. what else is there left?
+
+For the performance, i changed the rootmargin to -200px before threshold. that should do the trick.
