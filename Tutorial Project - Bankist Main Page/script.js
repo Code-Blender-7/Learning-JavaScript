@@ -5,7 +5,7 @@
 * Tutorial : Jonas.io
 * @Date:   2021-10-18 08:01:19
 * @Last Modified by:   Climax
-* @Last Modified time: 2021-10-23 13:22:23
+* @Last Modified time: 2021-10-25 09:42:08
 */
 
 
@@ -15,6 +15,7 @@ const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const header = document.querySelector('.header')
 const title = document.querySelector('title')
+const nav_logo = document.querySelector(".nav__logo")
 
 
 ///////////////////////////////////////
@@ -64,7 +65,14 @@ ALL SCRIPT AND WEBSITE RESOURCES ARE COPYRIGHTED BY Jonas Schmedtmann
 ///////////////////////////////////////////////////////////////////////////////////////////////////////// LECTURES
 
 
-//// //// Cookie message Popup
+
+// Refresh the page from the top
+window.onbeforeunload = function() {
+  window.scrollTo(0,0)
+}
+
+
+//// Cookie message Popup
 
 const message = document.createElement('div'); // Creating a div in the HTML [PROGRAMMED IN JS]
 message.classList.add('cookie-message') // Adding a class to the div  
@@ -84,6 +92,13 @@ document.querySelector('.btn--close-cookie').addEventListener('click', function(
   title.textContent = "𝙱𝚊𝚗𝚔𝚒𝚜𝚝 | 𝚆𝚑𝚎𝚗 𝙱𝚊𝚗𝚔𝚒𝚗𝚐 𝚖𝚎𝚎𝚝𝚜 𝙼𝚒𝚗𝚒𝚖𝚊𝚕𝚒𝚜"
 })
 
+
+//// Enabling the navigation logo scroll 
+
+nav_logo.addEventListener('click', function(e) {
+  header.scrollIntoView({ behavior : "smooth" })
+})
+
 //// Smooth Button Scrolling Animation - 'Learn More 🔽'
 
 const btnScrollTo = document.querySelector('.btn--scroll-to');
@@ -93,8 +108,6 @@ btnScrollTo.addEventListener('click', function(e) {
   section1.scrollIntoView({behavior: 'smooth'})
 })
 
-
-
 document.querySelector(".nav__links").addEventListener('click', function(e) {
   e.preventDefault()
   if (e.target.classList.contains("nav__link")) {
@@ -102,8 +115,6 @@ document.querySelector(".nav__links").addEventListener('click', function(e) {
     document.querySelector(id).scrollIntoView({behavior : "smooth"});
   }}
 )
-
-
 
 //// Enabling the Tabbed Component - 
 
@@ -146,8 +157,6 @@ const change_opacity = function(e, opacity, color) {
 nav.addEventListener("mouseover", e => {change_opacity(e, 0.5, "green")})
 nav.addEventListener("mouseout", e => {change_opacity(e, 1.0, "black")})
 
-
-
 //// Sticky Navigation : Intersection Observer API
 
 
@@ -156,34 +165,47 @@ nav.addEventListener("mouseout", e => {change_opacity(e, 1.0, "black")})
 
 const naviHeight = nav.getBoundingClientRect().height;
 
-
 const stickyNavOptions = {
   root: null,
   threshold: 0,
   rootMargin: `-${naviHeight}px`, // Intercepting before the threshold by 90 pixels
-}
+};
 
 const stickyNavCallBack = function(entries) {
   const [entry] = entries
   if (!entry.isIntersecting) nav.classList.add("sticky") 
   else nav.classList.remove("sticky")
-}
+};
 
 const headerObserver = new IntersectionObserver(stickyNavCallBack, stickyNavOptions);
 headerObserver.observe(header)
 
 
+//// Section Animation Slide reveal
+
+const allSections = document.querySelectorAll('.section')
+
+const revealSection = function(entries, observer) {
+  const [entry] = entries
+  if (entry.isIntersecting) entry.target.classList.remove("section--hidden")
+  if (allSections.forEach(cl => !cl.classList.contains('section--hidden'))) observer.unobserve(entry)
+}
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15, // 15% visible 
+})
+
+allSections.forEach(function(sections) {
+  sectionObserver.observe(sections)
+})
+
 
 ////////////////////////////////////////////////////////////////////
 ////////////// RESEARCH ONLY
 
-const nav_logo = document.querySelector(".nav__logo")
 
-console.log(nav_logo)
 
-nav_logo.addEventListener('click', function(e) {
-  header.scrollIntoView({ behavior : "smooth" })
-})
 ////////////////////////////////////////////////////
 ///////
 
