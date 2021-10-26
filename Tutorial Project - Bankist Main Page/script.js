@@ -5,7 +5,7 @@
 * Tutorial : Jonas.io
 * @Date:   2021-10-18 08:01:19
 * @Last Modified by:   Climax
-* @Last Modified time: 2021-10-26 19:46:37
+* @Last Modified time: 2021-10-26 22:24:37
 */
 
 
@@ -68,9 +68,9 @@ ALL SCRIPT AND WEBSITE RESOURCES OF THE STARTER FILES ARE COPYRIGHTED BY Jonas S
 
 
 // Refresh the page from the top
-window.onbeforeunload = function() {
-  window.scrollTo(0,0)
-}
+// window.onbeforeunload = function() {
+//   window.scrollTo(0,0)
+// }
 
 
 //// Cookie message Popup
@@ -127,7 +127,7 @@ const tabscontent = document.querySelectorAll(".operations__content");
 // active tab
 tabsContainer.addEventListener("click" , function(e) {
   const clicked = e.target.closest(".operations__tab")
-  tabs.forEach(t => t.classList.remove("operations__tab--active"))
+  tabs.forEach(t => t.classList.remove("operations__tab--active")) // remove first then add...
   clicked.classList.add('operations__tab--active')
 
   // activate content area -  
@@ -186,20 +186,25 @@ headerObserver.observe(header)
 
 const allSections = document.querySelectorAll('.section')
 
-const revealSection = function(entries, observer) {
-  const [entry] = entries
-  if (entry.isIntersecting) entry.target.classList.remove("section--hidden")
-  if (allSections.forEach(cl => !cl.classList.contains('section--hidden'))) observer.unobserve(entry)
-};
-
-const sectionObserver = new IntersectionObserver(revealSection, {
-  root: null,
-  threshold: 0.15, // 15% visible 
+allSections.forEach(function(e) {
+  e.classList.remove('section--hidden')
 })
 
-allSections.forEach(function(sections) {
-  sectionObserver.observe(sections)
-})
+
+// const revealSection = function(entries, observer) {
+//   const [entry] = entries
+//   if (entry.isIntersecting) entry.target.classList.remove("section--hidden")
+//   if (allSections.forEach(cl => !cl.classList.contains('section--hidden'))) observer.unobserve(entry)
+// };
+
+// const sectionObserver = new IntersectionObserver(revealSection, {
+//   root: null,
+//   threshold: 0.15, // 15% visible 
+// })
+
+// allSections.forEach(function(sections) {
+//   sectionObserver.observe(sections)
+// })
 
 //// Image loading 
 
@@ -226,6 +231,46 @@ imgTargets.forEach(image => imageObserver.observe(image))
 
 ////////////////////////////////////////////////////////////////////
 ////////////// RESEARCH ONLY
+
+//// Slide Component
+
+const slides = document.querySelectorAll('.slide')
+console.log(slides)
+
+const btnLeft = document.querySelector('.slider__btn--left')
+const btnRight = document.querySelector('.slider__btn--right')
+
+
+let curSlide = 0
+const numberOfSlides = slides.length
+
+const slider = document.querySelector('.slider')
+// slider.style.transform = `scale(0.2) translateX(-800px)`
+// slider.style.overflow = 'visible'
+
+const goToNextSlide = (slide) => slides.forEach((s,i) => s.style.transform = `translateX(${100* (i- slide)}%)`)
+goToNextSlide(curSlide)
+
+const nextSlide = function() {
+  if (curSlide === numberOfSlides - 1) {
+    curSlide = 0;
+  } else {
+    curSlide++
+  }
+  goToNextSlide(curSlide)
+};
+
+const prevSlide = function() {
+  if (curSlide === 0) {
+    curSlide = numberOfSlides - 1
+  } else {
+    curSlide--
+  }
+  goToNextSlide(curSlide)
+};
+
+btnRight.addEventListener('click', nextSlide);
+btnLeft.addEventListener('click', prevSlide);
 
 
 

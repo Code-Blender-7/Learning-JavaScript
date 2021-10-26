@@ -1,0 +1,47 @@
+This log is dedicated to the Slide Component of the Javascript Project....
+
+
+
+One thing was for sure that the whole project of this section of this part cannot be build with the knowledge that i had. 
+
+Jonas said that this project is gonna be BIG as hell.
+
+the slide component was completed depended on CSS. I'll try to solve this with the simple mind.. if i can.
+
+
+Contains of the slides are always completely irrevelent.
+
+On the HTML file, there is a section that is commented out. the section is about pictures of a sort. The images of the slide component thou have a speciality on them. That is that there are always on top of each other. You can't find out that by using the images. That's why you need a textbox to do the trick.
+
+For the sake of the design, I left them there without removing them. 
+The images are located below the 'slider' div class.
+
+Each of the slides are located over a slide transform value. The first slide is at slide 0%. The next slide is yet 100%. The next would be 200% and so on.
+
+Adding an i as a index would be enough for the slide math to do the trick...
+for example - 
+1st slide - 100*0 = 0
+2nd slide - 100*1 = 100
+3rd slide - 100*2 = 200 
+
+oh yeah, if you select the slider property class and set the transform scale to 0.5 then the content would be smaller.
+
+
+for the slider btn change, i..i god i skip that one.
+for now, use a calculator and inspect the value of the transform translateX.. i also am still figuring this out.
+
+
+most of the slide component is completely math..
+the actual concept of the slide component would be written off whenever i get the free time to log the report. 
+
+After when i get the mood, i better start working on the log.. exclusively.
+
+
+
+################################################################################################ 
+
+THIS PROJECT IS NOT DONE ENTIRELY BY ME. THE STARTER FILES AND THE DESIGNS ARE ALL WORKS FROM jonas.io 
+
+ALL COPYRIGHT RESERVED BY Jonas Schmedtmann
+
+################################################################################################ 
