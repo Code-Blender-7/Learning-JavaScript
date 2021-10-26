@@ -5,7 +5,7 @@
 * Tutorial : Jonas.io
 * @Date:   2021-10-18 08:01:19
 * @Last Modified by:   Climax
-* @Last Modified time: 2021-10-25 19:05:08
+* @Last Modified time: 2021-10-26 19:46:37
 */
 
 
@@ -56,8 +56,9 @@ document.addEventListener('keydown', function (e) {
 /*
 
 this project is all about experts adding funtionality to the project. Be sure to add keep the tabs of the DOM. Also, remember that this file is all about adding features so remember to code each features from up to down. 
+Also remember that the logs are created everytime of a new feature section. Check em out if you're interested.
 
-ALL SCRIPT AND WEBSITE RESOURCES ARE COPYRIGHTED BY Jonas Schmedtmann
+ALL SCRIPT AND WEBSITE RESOURCES OF THE STARTER FILES ARE COPYRIGHTED BY Jonas Schmedtmann
 
 
 */
@@ -200,21 +201,14 @@ allSections.forEach(function(sections) {
   sectionObserver.observe(sections)
 })
 
-
-////////////////////////////////////////////////////////////////////
-////////////// RESEARCH ONLY
-
-// Image loading 
+//// Image loading 
 
 const imgTargets = document.querySelectorAll('img[data-src]')
-console.log(imgTargets)
-
 
 const loadImage = function(entries, observer) {
   const [entry] = entries;
-  console.log(entry)
 
-  entry.target.src = entry.target.dataset.src // replace the lazy data-src with the target's dataset src.
+  entry.target.src = entry.target.dataset.src // change classlist from lazy data-src with the target's dataset src.
   
   entry.target.addEventListener('load' , function() {
     entry.target.classList.remove('lazy-img')
@@ -224,11 +218,15 @@ const loadImage = function(entries, observer) {
 
 const imageObserver = new IntersectionObserver(loadImage, {
   root : null,
-  threshold: 0
 });
 
-
+// apply for every image
 imgTargets.forEach(image => imageObserver.observe(image))
+
+
+////////////////////////////////////////////////////////////////////
+////////////// RESEARCH ONLY
+
 
 
 ////////////////////////////////////////////////////

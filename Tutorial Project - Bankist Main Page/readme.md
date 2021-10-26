@@ -11,9 +11,16 @@ Multiple of the features of the project were taken inactive in the course starte
 
 
 
-This repository folder is still new and the readme.md files are yet to be updated. 
+
+###Caution  - 
+On the tabbed component, if the user tries to click outside of the tabs in the div section, the javascript engine would be callbacking a typeError. 
+This is also not fixed yet...
+
+
+
 
 Please be patient. 
+This repository folder is still new and the readme.md files are yet to be updated. 
 
 
 

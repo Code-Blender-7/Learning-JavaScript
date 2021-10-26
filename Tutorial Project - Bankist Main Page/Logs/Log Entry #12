@@ -32,3 +32,12 @@ I realized that the animations may not work properly because IO.API couldn't det
 Used a onbeforeunload to do the trick. god that was hard.
 
 Perhaps in the future, i may add a CSS that displays a modal of a loading animation until the website is completely refreshed. That requires a lot of work but I try to see what I can do.
+
+
+################################################################################################ 
+
+THIS PROJECT IS NOT DONE ENTIRELY BY ME. THE STARTER FILES AND THE DESIGNS ARE ALL WORKS FROM jonas.io 
+
+ALL COPYRIGHT RESERVED BY Jonas Schmedtmann
+
+################################################################################################ 

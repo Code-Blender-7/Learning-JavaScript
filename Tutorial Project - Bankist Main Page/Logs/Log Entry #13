@@ -37,3 +37,12 @@ he changed them to target.dataset.src meaning that all the current entry targets
 so far, the website's images were already working. what else is there left?
 
 For the performance, i changed the rootmargin to -200px before threshold. that should do the trick.
+
+
+################################################################################################ 
+
+THIS PROJECT IS NOT DONE ENTIRELY BY ME. THE STARTER FILES AND THE DESIGNS ARE ALL WORKS FROM jonas.io 
+
+ALL COPYRIGHT RESERVED BY Jonas Schmedtmann
+
+################################################################################################ 
