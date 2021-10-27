@@ -5,7 +5,7 @@
 * Tutorial : Jonas.io
 * @Date:   2021-10-18 08:01:19
 * @Last Modified by:   Climax
-* @Last Modified time: 2021-10-28 01:07:21
+* @Last Modified time: 2021-10-28 01:17:32
 */
 
 
@@ -67,7 +67,7 @@ ALL SCRIPT AND WEBSITE RESOURCES OF THE STARTER FILES ARE COPYRIGHTED BY Jonas S
 
 
 
-// Refresh the page from the top
+//// Refresh the page from the top
 window.onbeforeunload = function() {
   window.scrollTo(0,0)
 }
@@ -234,8 +234,6 @@ const slider = function() {
   const numberOfSlides = slides.length
 
   const slider = document.querySelector('.slider')
-  // slider.style.transform = `scale(0.2) translateX(-800px)`
-  // slider.style.overflow = 'visible'
 
   const goToNextSlide = (slide) => slides.forEach((s,i) => s.style.transform = `translateX(${100* (i- slide)}%)`)
   goToNextSlide(curSlide)
@@ -249,6 +247,7 @@ const slider = function() {
     document.querySelector(`.dots__dot[data-slide="${slide}"]`).classList.add('dots__dot--active')
   };
 
+
   const createDots = function() {
     slides.forEach(function(_,i) {
       dotContainer.insertAdjacentHTML('beforeend', 
@@ -257,7 +256,7 @@ const slider = function() {
     })
   }
   createDots();
-  
+
   const nextSlide = function() {
     if (curSlide === numberOfSlides - 1) {
       curSlide = 0;
@@ -287,25 +286,13 @@ const slider = function() {
     if (e.code === "ArrowRight") nextSlide()
   })
 
-  dotContainer.addEventListener('click', function(e) {
+  dotContainer.addEventListener('click', function(e) { // Event Delegation
     if (e.target.classList.contains('dots__dot')) {
-      console.log("bot")
-      console.log(e.target)
       const slide = e.target.dataset.slide;
       goToNextSlide(slide)
       activateDot(slide)
-
     }
   })
 }
 
 slider()
-
-////////////////////////////////////////////////////////////////////
-////////////// RESEARCH ONLY
-
-
-
-////////////////////////////////////////////////////
-///////
-
