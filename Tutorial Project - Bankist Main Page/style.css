@@ -124,11 +124,13 @@ img {
   z-index: 100;
 }
 
+
 /* nav and stickly class at the same time */
 .nav.sticky {
   position: fixed;
   background-color: rgba(255, 255, 255, 0.95);
 }
+
 
 .nav__logo {
   height: 4.5rem;
@@ -458,8 +460,7 @@ h4 {
 }
 
 .dots__dot--active {
-  /* background-color: #fff; */
-  background-color: #888;
+  background-color: #fff;
   opacity: 1;
 }
 
