@@ -1,23 +1,13 @@
 'use strict';
 
-/*
-* @Author: Climax
-* Tutorial : Jonas.io
-* @Date:   2021-10-18 08:01:19
-* @Last Modified by:   Climax
-* @Last Modified time: 2021-10-26 22:24:37
-*/
-
-
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const header = document.querySelector('.header')
 const title = document.querySelector('title')
-const nav_logo = document.querySelector(".nav__logo")
 
-
+document.documentElement.style.setProperty('--color-primary', 'violet')
 ///////////////////////////////////////
 // Modal window
 
@@ -49,43 +39,30 @@ document.addEventListener('keydown', function (e) {
 });
 
 
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////////////////// DISCLAMER
 
 /*
 
 this project is all about experts adding funtionality to the project. Be sure to add keep the tabs of the DOM. Also, remember that this file is all about adding features so remember to code each features from up to down. 
-Also remember that the logs are created everytime of a new feature section. Check em out if you're interested.
 
-ALL SCRIPT AND WEBSITE RESOURCES OF THE STARTER FILES ARE COPYRIGHTED BY Jonas Schmedtmann
+ALL SCRIPT AND WEBSITE RESOURCES ARE COPYRIGHTED BY Jonas Schmedtmann
 
 
 */
 
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////// LECTURES
 
 
-
-// Refresh the page from the top
-// window.onbeforeunload = function() {
-//   window.scrollTo(0,0)
-// }
-
-
-//// Cookie message Popup
+//// //// Cookie message Popup
 
 const message = document.createElement('div'); // Creating a div in the HTML [PROGRAMMED IN JS]
 message.classList.add('cookie-message') // Adding a class to the div  
-message.innerHTML = `<center>We use cookies for improved functionality. <br> Oh and don't mind this being here. I didn't learn <i>CSS</i> or <i>HTML</i> to get this on the top.</center><button class="btn btn--close-cookie">Okay</button>`
 
-header.after(message)
+message.innerHTML = `<center>We use cookies for improved functionality <br> And We serve no desert </center><button class="btn btn--close-cookie">Got it!</button>`
 
-// Message popup design 
-message.style.backgroundColor = "lightgrey"
-message.style.color = "black"
-message.style.width = "120%"
-message.style.height = Number.parseFloat(getComputedStyle(message).height,10) + 20 + "px";
+
+header.before(message) // before the header
 
 
 document.querySelector('.btn--close-cookie').addEventListener('click', function() {
@@ -94,13 +71,16 @@ document.querySelector('.btn--close-cookie').addEventListener('click', function(
 })
 
 
-//// Enabling the navigation logo scroll 
+// Styles
 
-nav_logo.addEventListener('click', function(e) {
-  header.scrollIntoView({ behavior : "smooth" })
-})
+message.style.backgroundColor = "#37383d"
+message.style.width = "120%"
+message.style.height = Number.parseFloat(getComputedStyle(message).height,10) + 20 + "px";
 
-//// Smooth Button Scrolling Animation - 'Learn More 🔽'
+
+
+
+//// Smooth Button Scrolling Animation
 
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1')
@@ -109,171 +89,60 @@ btnScrollTo.addEventListener('click', function(e) {
   section1.scrollIntoView({behavior: 'smooth'})
 })
 
-document.querySelector(".nav__links").addEventListener('click', function(e) {
-  e.preventDefault()
-  if (e.target.classList.contains("nav__link")) {
-    const id = e.target.getAttribute('href')
-    document.querySelector(id).scrollIntoView({behavior : "smooth"});
-  }}
-)
-
-//// Enabling the Tabbed Component - 
-
-const tabs = document.querySelectorAll(".operations__tab");
-const tabsContainer = document.querySelector(".operations__tab-container");
-const tabscontent = document.querySelectorAll(".operations__content");
- 
-
-// active tab
-tabsContainer.addEventListener("click" , function(e) {
-  const clicked = e.target.closest(".operations__tab")
-  tabs.forEach(t => t.classList.remove("operations__tab--active")) // remove first then add...
-  clicked.classList.add('operations__tab--active')
-
-  // activate content area -  
-  tabscontent.forEach(c => c.classList.remove("operations__content--active"))
-  document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add("operations__content--active")
-})
-
-
-//// Navigation bar - toggle button fade in, fate out while hover
-
-const nav = document.querySelector(".nav")
-
-const change_opacity = function(e, opacity, color) {
-
-    if (e.target.classList.contains("nav__link")) {
-    const link_nav = e.target
-    const siblings = link_nav.closest(".nav").querySelectorAll(".nav__link") // Close to the parentNode
-    const logo = link_nav.closest(".nav").querySelector("img")
-
-    link_nav.style.color = color
-    siblings.forEach(el => {
-      if (el !== link_nav) el.style.opacity = opacity;
-    });
-    logo.style.opacity = opacity;
-  }
-}
-
-nav.addEventListener("mouseover", e => {change_opacity(e, 0.5, "green")})
-nav.addEventListener("mouseout", e => {change_opacity(e, 1.0, "black")})
-
-//// Sticky Navigation : Intersection Observer API
-
-
-// IDEA - WHEN THE HEADER IS NOT INTERSECTING THE VIEWPORT IS WHEN WE WANT THE STICKY NAVIGATION TO WORK.
-
-
-const naviHeight = nav.getBoundingClientRect().height;
-
-const stickyNavOptions = {
-  root: null,
-  threshold: 0,
-  rootMargin: `-${naviHeight}px`, // Intercepting before the threshold by 90 pixels
-};
-
-const stickyNavCallBack = function(entries) {
-  const [entry] = entries
-  if (!entry.isIntersecting) nav.classList.add("sticky") 
-  else nav.classList.remove("sticky")
-};
-
-const headerObserver = new IntersectionObserver(stickyNavCallBack, stickyNavOptions);
-headerObserver.observe(header)
-
-
-//// Section Animation Slide reveal
-
-const allSections = document.querySelectorAll('.section')
-
-allSections.forEach(function(e) {
-  e.classList.remove('section--hidden')
-})
-
-
-// const revealSection = function(entries, observer) {
-//   const [entry] = entries
-//   if (entry.isIntersecting) entry.target.classList.remove("section--hidden")
-//   if (allSections.forEach(cl => !cl.classList.contains('section--hidden'))) observer.unobserve(entry)
-// };
-
-// const sectionObserver = new IntersectionObserver(revealSection, {
-//   root: null,
-//   threshold: 0.15, // 15% visible 
-// })
-
-// allSections.forEach(function(sections) {
-//   sectionObserver.observe(sections)
-// })
-
-//// Image loading 
-
-const imgTargets = document.querySelectorAll('img[data-src]')
-
-const loadImage = function(entries, observer) {
-  const [entry] = entries;
-
-  entry.target.src = entry.target.dataset.src // change classlist from lazy data-src with the target's dataset src.
-  
-  entry.target.addEventListener('load' , function() {
-    entry.target.classList.remove('lazy-img')
-  })
-  observer.unobserve(entry.target)
-};
-
-const imageObserver = new IntersectionObserver(loadImage, {
-  root : null,
-});
-
-// apply for every image
-imgTargets.forEach(image => imageObserver.observe(image))
-
 
 ////////////////////////////////////////////////////////////////////
 ////////////// RESEARCH ONLY
 
-//// Slide Component
+const h1 = document.querySelector('h1') // Specific element
 
-const slides = document.querySelectorAll('.slide')
-console.log(slides)
+const alertH1 = function(e) {
+  alert('addEventListener: It works')
 
-const btnLeft = document.querySelector('.slider__btn--left')
-const btnRight = document.querySelector('.slider__btn--right')
+  h1.removeEventListener('mouseenter', alertH1)
+}
 
 
-let curSlide = 0
-const numberOfSlides = slides.length
+h1.addEventListener('mouseenter', alertH1)
 
-const slider = document.querySelector('.slider')
-// slider.style.transform = `scale(0.2) translateX(-800px)`
-// slider.style.overflow = 'visible'
 
-const goToNextSlide = (slide) => slides.forEach((s,i) => s.style.transform = `translateX(${100* (i- slide)}%)`)
-goToNextSlide(curSlide)
-
-const nextSlide = function() {
-  if (curSlide === numberOfSlides - 1) {
-    curSlide = 0;
-  } else {
-    curSlide++
-  }
-  goToNextSlide(curSlide)
-};
-
-const prevSlide = function() {
-  if (curSlide === 0) {
-    curSlide = numberOfSlides - 1
-  } else {
-    curSlide--
-  }
-  goToNextSlide(curSlide)
-};
-
-btnRight.addEventListener('click', nextSlide);
-btnLeft.addEventListener('click', prevSlide);
+setTimeout(() => message.innerHTML = `<center>We use cookies for improved functionality <br> And We serve no desert </center><button class="btn btn--close-cookie">NANI!</button>` , 6000)
 
 
 
-////////////////////////////////////////////////////
-///////
+// rgb(255,255,255)
+
+const randomInt = (min,max) => Math.floor(Math.random() * (max-min + 1) + min);
+const randomColor = () => `rgb(${randomInt(0,255)},${randomInt(0,255)},${randomInt(0,255)})`
+
+console.log(randomColor)
+
+
+// Selecting the event handlers 
+const nav__links = document.querySelectorAll('.nav__link')
+console.log(nav__links)
+
+document.querySelector('.nav__link').addEventListener('click', function(e) {
+  console.log("Linked")
+  this.style.backgroundColor = randomColor()
+  console.log("Link -", e.target)
+  console.log("Current Link -", e.currentTarget)  
+
+  // Stop the propagation.
+  e.stopPropagation()
+
+})
+
+document.querySelector('.nav__links').addEventListener("click", function(e) {
+  this.style.backgroundColor = randomColor()
+  console.log("Link -", e.target)
+  console.log("Current Link -", e.currentTarget)  
+
+})
+
+
+document.querySelector('.nav').addEventListener("click", function(e) {
+  this.style.backgroundColor = randomColor()
+  console.log("Link -", e.target)
+  console.log("Current Link -", e.currentTarget)  
+}, true)
 
