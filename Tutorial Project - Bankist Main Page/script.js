@@ -5,9 +5,10 @@
 * Tutorial : Jonas.io
 * @Date:   2021-10-18 08:01:19
 * @Last Modified by:   Climax
-* @Last Modified time: 2021-10-28 01:17:32
+* @Last Modified time: 2021-10-30 14:42:05
 */
 
+// alert("The following website is completely for education purposes, the images and the resources are copyrighted by Jonas Schmedtmann.")
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
@@ -68,14 +69,15 @@ ALL SCRIPT AND WEBSITE RESOURCES OF THE STARTER FILES ARE COPYRIGHTED BY Jonas S
 
 
 //// Refresh the page from the top
-window.onbeforeunload = function() {
-  window.scrollTo(0,0)
-}
+// window.onbeforeunload = function() {
+//   window.scrollTo(0,0)
+// }
 
 
 //// Cookie message Popup
 
 const message = document.createElement('div'); // Creating a div in the HTML [PROGRAMMED IN JS]
+
 message.classList.add('cookie-message') // Adding a class to the div  
 message.innerHTML = `<center>We use cookies for improved functionality. <br> Oh and don't mind this being here. I didn't learn <i>CSS</i> or <i>HTML</i> to get this on the top.</center><button class="btn btn--close-cookie">Okay</button>`
 
@@ -103,7 +105,7 @@ nav_logo.addEventListener('click', function(e) {
 //// Smooth Button Scrolling Animation - 'Learn More 🔽'
 
 const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1')
+const section1 = document.querySelector("#section--1")
 
 btnScrollTo.addEventListener('click', function(e) {
   section1.scrollIntoView({behavior: 'smooth'})
@@ -164,6 +166,7 @@ nav.addEventListener("mouseout", e => {change_opacity(e, 1.0, "black")})
 
 
 const naviHeight = nav.getBoundingClientRect().height;
+const image = document.querySelector("#logo")
 
 const stickyNavOptions = {
   root: null,
@@ -173,8 +176,13 @@ const stickyNavOptions = {
 
 const stickyNavCallBack = function(entries) {
   const [entry] = entries
-  if (!entry.isIntersecting) nav.classList.add("sticky") 
-  else nav.classList.remove("sticky")
+  if (!entry.isIntersecting) {
+    nav.classList.add("sticky") 
+    image.setAttribute("title", "Navigate to the top?")
+  } else {
+    nav.classList.remove("sticky")
+    image.setAttribute("title", "Bankist Logo")
+  }
 };
 
 const headerObserver = new IntersectionObserver(stickyNavCallBack, stickyNavOptions);
@@ -296,3 +304,29 @@ const slider = function() {
 }
 
 slider()
+
+
+
+
+/////
+
+const footer = document.querySelector(".footer")
+
+const customMessage = document.createElement("p")
+customMessage.classList.add("footer__copyright")
+
+customMessage.innerHTML = `Starter files by Jonas Schmedtmann.</br> Student - <a class="footer__link twitter-link" target="_blank" href="https://twitter.com/Black_2_white">@Black_2_white</a>`
+
+
+footer.append(customMessage)
+//////
+
+
+
+// const message = document.createElement('div'); // Creating a div in the HTML [PROGRAMMED IN JS]
+
+// message.classList.add('cookie-message') // Adding a class to the div  
+// message.innerHTML = `<center>We use cookies for improved functionality. <br> Oh and don't mind this being here. I didn't learn <i>CSS</i> or <i>HTML</i> to get this on the top.</center><button class="btn btn--close-cookie">Okay</button>`
+
+// header.after(message)
+
