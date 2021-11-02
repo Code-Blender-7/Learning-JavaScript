@@ -68,7 +68,7 @@ body {
 }
 
 .section__header:hover {
-  color:WHITE;
+  color:darkgreen;
   transition:color 1s ease 0s;
 }
 

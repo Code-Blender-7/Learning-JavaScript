@@ -5,8 +5,26 @@
 * Tutorial : Jonas.io
 * @Date:   2021-10-18 08:01:19
 * @Last Modified by:   Climax
-* @Last Modified time: 2021-10-30 14:42:05
+* @Last Modified time: 2021-11-03 01:23:41
 */
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////// DISCLAMER
+
+/*
+
+this project is all about experts adding funtionality to the project. Be sure to add keep the tabs of the DOM. Also, remember that this file is all about adding features so remember to code each features from up to down. 
+Also remember that the logs are created everytime of a new feature section. Check em out if you're interested.
+
+ALL SCRIPT AND WEBSITE RESOURCES OF THE STARTER FILES ARE COPYRIGHTED BY Jonas Schmedtmann
+
+
+*/
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////// LECTURES
+
+
 
 // alert("The following website is completely for education purposes, the images and the resources are copyrighted by Jonas Schmedtmann.")
 
@@ -52,29 +70,17 @@ document.addEventListener('keydown', function (e) {
 
 
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////// DISCLAMER
 
-/*
-
-this project is all about experts adding funtionality to the project. Be sure to add keep the tabs of the DOM. Also, remember that this file is all about adding features so remember to code each features from up to down. 
-Also remember that the logs are created everytime of a new feature section. Check em out if you're interested.
-
-ALL SCRIPT AND WEBSITE RESOURCES OF THE STARTER FILES ARE COPYRIGHTED BY Jonas Schmedtmann
-
-
-*/
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////// LECTURES
+// Refresh the page from the top
+window.onbeforeunload = function() {
+  window.scrollTo(0,0)
+}
 
 
 
-//// Refresh the page from the top
-// window.onbeforeunload = function() {
-//   window.scrollTo(0,0)
-// }
-
-
+///////////////////////////////////////////
 //// Cookie message Popup
+///////////////////////////////////////////
 
 const message = document.createElement('div'); // Creating a div in the HTML [PROGRAMMED IN JS]
 
@@ -96,13 +102,20 @@ document.querySelector('.btn--close-cookie').addEventListener('click', function(
 })
 
 
+
+
+///////////////////////////////////////////
 //// Enabling the navigation logo scroll 
+///////////////////////////////////////////
 
 nav_logo.addEventListener('click', function(e) {
   header.scrollIntoView({ behavior : "smooth" })
 })
 
+
+///////////////////////////////////////////
 //// Smooth Button Scrolling Animation - 'Learn More 🔽'
+///////////////////////////////////////////
 
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector("#section--1")
@@ -119,7 +132,10 @@ document.querySelector(".nav__links").addEventListener('click', function(e) {
   }}
 )
 
+
+///////////////////////////////////////////
 //// Enabling the Tabbed Component - 
+///////////////////////////////////////////
 
 const tabs = document.querySelectorAll(".operations__tab");
 const tabsContainer = document.querySelector(".operations__tab-container");
@@ -138,7 +154,11 @@ tabsContainer.addEventListener("click" , function(e) {
 })
 
 
+
+
+///////////////////////////////////////////
 //// Navigation bar - toggle button fade in, fate out while hover
+///////////////////////////////////////////
 
 const nav = document.querySelector(".nav")
 const change_opacity = function(e, opacity, color) {
@@ -159,12 +179,13 @@ const change_opacity = function(e, opacity, color) {
 nav.addEventListener("mouseover", e => {change_opacity(e, 0.5, "green")})
 nav.addEventListener("mouseout", e => {change_opacity(e, 1.0, "black")})
 
-//// Sticky Navigation : Intersection Observer API
 
+
+///////////////////////////////////////////
+//// Sticky Navigation : Intersection Observer API
+///////////////////////////////////////////
 
 // IDEA - WHEN THE HEADER IS NOT INTERSECTING THE VIEWPORT IS WHEN WE WANT THE STICKY NAVIGATION TO WORK.
-
-
 const naviHeight = nav.getBoundingClientRect().height;
 const image = document.querySelector("#logo")
 
@@ -189,7 +210,12 @@ const headerObserver = new IntersectionObserver(stickyNavCallBack, stickyNavOpti
 headerObserver.observe(header)
 
 
+
+
+////////////////////////////////////////////
 //// Section Animation Slide reveal
+///////////////////////////////////////////
+
 
 const allSections = document.querySelectorAll('.section')
 const revealSection = function(entries, observer) {
@@ -207,7 +233,11 @@ allSections.forEach(function(sections) {
   sectionObserver.observe(sections)
 })
 
-//// Image loading 
+
+
+///////////////////////////////////////////
+//// Image loading ////
+///////////////////////////////////////////
 
 const imgTargets = document.querySelectorAll('img[data-src]')
 
@@ -230,7 +260,11 @@ const imageObserver = new IntersectionObserver(loadImage, {
 imgTargets.forEach(image => imageObserver.observe(image))
 
 
-//// Slide Component
+
+
+///////////////////////////////////////////
+//// Slide Component ////
+///////////////////////////////////////////
 
 const slider = function() {
   const slides = document.querySelectorAll('.slide')
@@ -247,7 +281,7 @@ const slider = function() {
   goToNextSlide(curSlide)
 
 
-  //// Adding the dots 
+  // Adding the dots 
   const dotContainer = document.querySelector('.dots');
 
   const activateDot = function(slide) {
@@ -288,7 +322,7 @@ const slider = function() {
   btnRight.addEventListener('click', nextSlide);
   btnLeft.addEventListener('click', prevSlide);
 
-  //// Keydown support
+  // Keydown support
   document.addEventListener('keydown', function(e) {
     if (e.code === "ArrowLeft") prevSlide()
     if (e.code === "ArrowRight") nextSlide()
@@ -307,26 +341,17 @@ slider()
 
 
 
-
-/////
+///////////////////////////////////////////
+///// EXTRAS ////
+///////////////////////////////////////////
 
 const footer = document.querySelector(".footer")
 
 const customMessage = document.createElement("p")
-customMessage.classList.add("footer__copyright")
 
+customMessage.classList.add("footer__copyright")
 customMessage.innerHTML = `Starter files by Jonas Schmedtmann.</br> Student - <a class="footer__link twitter-link" target="_blank" href="https://twitter.com/Black_2_white">@Black_2_white</a>`
 
-
 footer.append(customMessage)
-//////
 
-
-
-// const message = document.createElement('div'); // Creating a div in the HTML [PROGRAMMED IN JS]
-
-// message.classList.add('cookie-message') // Adding a class to the div  
-// message.innerHTML = `<center>We use cookies for improved functionality. <br> Oh and don't mind this being here. I didn't learn <i>CSS</i> or <i>HTML</i> to get this on the top.</center><button class="btn btn--close-cookie">Okay</button>`
-
-// header.after(message)
 
