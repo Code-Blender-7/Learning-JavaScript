@@ -1,7 +1,13 @@
-# Introduction >/
+# Introduction
 
 Bankist Main Page is a tutorial project that can be found from the JavaScript course that was done by author [@jonasschmedtman](https://twitter.com/jonasschmedtman). 
 
+### PREVIEW -
+
+
+
+
+## <u>About the project - </u>
 The Bankist Main Page is created to test out and implement the javascripts skills and the DOM skills at the same time. 
 
 Multiple of the features of the project were taken inactive in the course starter file. The objective was to enable the features using only the DOM and not touching the CSS or the HTML. All of it must be taken on the JavaScript file. 
@@ -10,18 +16,9 @@ Multiple of the features of the project were taken inactive in the course starte
 <b>In Summary</b>, you can think this project as an ordinary website home page of a organization or something. 
 
 
-
-
-###Caution  - 
+###Caution ⚠ - 
 On the tabbed component, if the user tries to click outside of the tabs in the div section, the javascript engine would be callbacking a typeError. 
 This is also not fixed yet...
-
-
-
-
-Please be patient. 
-This repository folder is still new and the readme.md files are yet to be updated. 
-
 
 
 ## <u>Credits</u> -
