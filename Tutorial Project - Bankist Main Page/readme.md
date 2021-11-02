@@ -3,8 +3,7 @@
 Bankist Main Page is a tutorial project that can be found from the JavaScript course that was done by author [@jonasschmedtman](https://twitter.com/jonasschmedtman). 
 
 ### PREVIEW -
-
-
+![Images](https://github.com/Code-Blender-7/Learning-JavaScript/blob/677a8a25c5121ea7e71bdcad8a18a11e0ccf7b6a/Tutorial%20Project%20-%20Bankist%20Main%20Page/Images%20for%20readme/home_logo.png)
 
 
 ## <u>About the project - </u>
@@ -17,9 +16,10 @@ Multiple of the features of the project were taken inactive in the course starte
 
 
 ###Caution ⚠ - 
-On the tabbed component, if the user tries to click outside of the tabs in the div section, the javascript engine would be callbacking a typeError. 
+1. On the tabbed component, if the user tries to click outside of the tabs in the div section, the javascript engine would be callbacking a typeError. 
 This is also not fixed yet...
 
+2. the keyboard support for the slide component may change the view of the page on the x axis. This behavior is unknown.
 
 ## <u>Credits</u> -
 
