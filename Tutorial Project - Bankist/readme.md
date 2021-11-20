@@ -17,6 +17,8 @@ According to the course, the index.html and style.css were created by default by
 
 To ensure the original author's authencitity, no code nor comment on the index.html and the style.css was made. The script.js is modified by me where I added numerous upgrade that is wayy advanced then the original final .js file. 
 
+## 2. [PREVIEW THE .html LIVE](https://htmlpreview.github.io/?https://github.com/Code-Blender-7/Learning-JavaScript/blob/main/Tutorial%20Project%20-%20Bankist/~ProjectFILES/index.html)
+
 //////////////////////////////////////////////////////////
 
 ## 2. Structure of the Project-
