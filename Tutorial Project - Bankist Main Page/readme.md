@@ -5,6 +5,10 @@ Bankist Main Page is a tutorial project that can be found from the JavaScript co
 ### PREVIEW -
 ![Images](https://github.com/Code-Blender-7/Learning-JavaScript/blob/677a8a25c5121ea7e71bdcad8a18a11e0ccf7b6a/Tutorial%20Project%20-%20Bankist%20Main%20Page/Images%20for%20readme/home_logo.png)
 
+[Preview it live using htmlpreview.github.io](https://htmlpreview.github.io/?https://github.com/Code-Blender-7/Learning-JavaScript/blob/main/Tutorial%20Project%20-%20Bankist%20Main%20Page/Bankist%20main%20page/index.html)
+
+
+``Note that the htmlpreview may not present the full potential of the program``
 
 ## <u>About the project - </u>
 The Bankist Main Page is created to test out and implement the javascripts skills and the DOM skills at the same time. 
