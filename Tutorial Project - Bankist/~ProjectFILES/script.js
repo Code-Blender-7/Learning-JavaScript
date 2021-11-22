@@ -360,8 +360,8 @@ let sumInHighlight = true
 labelSumIn.addEventListener('click' , function() {
   [...document.querySelectorAll('.movements__value')]
 .forEach(function(row , i) {
-    if (parseInt(row.textContent) > 0 && sumInHighlight) row.style.backgroundColor = 'lightgreen'
-    else row.style.backgroundColor = 'white'
+    if (parseInt(row.textContent) > 0 && sumInHighlight) row.style.color = 'lightgreen'
+    else row.style.color = 'black'
   })
 	sumInHighlight = !sumInHighlight
 })
