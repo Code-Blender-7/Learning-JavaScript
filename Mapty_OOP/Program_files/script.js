@@ -12,16 +12,27 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
-
 if (navigator.geolocation) {
 	navigator.geolocation.getCurrentPosition(
 		function(position) {
 			// destructuring
 			const {latitude} = position.coords;
 			const {longitude} = position.coords;
-			console.log(position.coords)
-			console.log(latitude, longitude)
-			console.log(`https://www.google.com/maps/@${latitude},${longitude},14z`)
+			const coords = [latitude, longitude]
+
+
+			const map = L.map('map').setView(coords, 13);
+
+			// change may style 
+			L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+			    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+			}).addTo(map);
+
+			// add a marker
+			L.marker(coords).addTo(map)
+			    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+			    .openPopup();
+
 		}, 
 		// else
 		// if user denies location access
