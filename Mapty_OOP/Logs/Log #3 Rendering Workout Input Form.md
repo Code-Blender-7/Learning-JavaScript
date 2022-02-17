@@ -11,7 +11,7 @@ The actual form is hidden in the ul class called workouts.
 Jonas added a code called inputDistance.focus() This codeline adds a focus on the textline and you be seeing the cursor from there. It is recommended for user experience.
 
 
-Here is a thing that Jonas explained that is that you don't really add an eventListerner inside of an eventlister.
+Here is a thing that Jonas explained that is that you don't really add an eventListerner inside of an eventlisterner.
 
 To fix the code, we had to remove the dependecies and then relocate the code. To do that, it was required to make sure that the elements were all global variables. 
 
