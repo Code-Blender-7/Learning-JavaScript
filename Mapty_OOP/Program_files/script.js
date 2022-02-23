@@ -53,11 +53,12 @@ class Cycling extends Workout {
 	}	
 
 	calcSpeed() {
-		this.speed = this.distance / (this.duration / 60);
+		this.speed = this.distance / (this.duration / 60); // pace => speed formula
 		return this.speed
 	}
 }
 
+// testings
 const run1 = new Running([39,-12],5.2,24,178)
 const Cycling1 = new Cycling([39,-12],5.2,24,178)
 console.log(run1, Cycling1)
@@ -69,6 +70,7 @@ class App {
 	constructor() {
 		this._getPosition();
 		form.addEventListener("submit", this._newWorkout.bind(this));
+		inputType.addEventListener("change", this._toogleElevationField) // changes the type field
 	}
 
 	_getPosition() {
@@ -102,31 +104,50 @@ class App {
 		this.#mapEvent = mapE;
 		form.classList.remove('hidden') // reveal form
 		inputDistance.focus()
-	}
+	};
 
 	_toogleElevationField() {
+		inputElevation.closest(".form__row").classList.toggle("form__row--hidden")
+		inputCadence.closest(".form__row").classList.toggle("form__row--hidden")
+
 		// change the form
 
 	};
 
 	_newWorkout(e) {
 		e.preventDefault()
+		const validInput = (...inputs) => inputs.every(inp => Number.isFinite(inp)) // data type validiation
+		const CheckInputPositive = (...inputs) => inputs.every(inp => inp>0)
+		const type = inputType.value;
+		const distance = +inputDistance.value; // "+" = string
+		const duration = +inputDuration.value; // "+" = string
+		
 
-			// clearning input fields
-			inputDistance.value = inputCadence.value = inputDuration.value = inputElevation.value = " "
-			const {lat, lng} = this.#mapEvent.latlng
-			// add a marker
-			L.marker([lat, lng]).addTo(this.#map)
-			    .bindPopup(L.popup(PopupOptions))
-			    .setPopupContent("Testing")
-			    .openPopup()
+		// If Workout => running; select running object
+
+		if (type === "running") {
+			const cadence = +inputCadence.value;
+			if (!validInput(distance, duration, cadence) || !CheckInputPositive(distance, duration, cadence)) 
+				return alert("Input has to be a positive number")
 		}
 
-		// inputType.addEventListener("change", function() {
-		// 	inputElevation.closest(".form__row").classList.toggle("form__row--hidden")
-		// 	inputCadence.closest(".form__row").classList.toggle("form__row--hidden")
-		// })
+		// if Workout => cycling; select cycling object
+		if (type === "cycling") {
+			const elevation = +inputElevation.value;
+			if (!validInput(distance, duration, elevation) || !CheckInputPositive(distance, duration)) 
+				return alert("Input has to be a positive number")
+		}
+		// clearning input fields
+		inputDistance.value = inputCadence.value = inputDuration.value = inputElevation.value = " "
+		
 
+		// adding a marker
+		const {lat, lng} = this.#mapEvent.latlng
+		L.marker([lat, lng]).addTo(this.#map)
+		    .bindPopup(L.popup(PopupOptions))
+		    .setPopupContent("Testing")
+		    .openPopup()
+	}
 }
 
 // create a new object
