@@ -14,5 +14,13 @@ const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
 
+// access the api
 
+navigator.geolocation.getCurrentPosition(function(position) {
+	console.log(position)
+	const {latitude} = position.coords;
+	const {longitude} = position.coords;
+}, function() {
+	alert("Could not get your positon")
+})
 
