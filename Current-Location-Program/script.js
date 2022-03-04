@@ -1,7 +1,7 @@
 'use strict'
 
 // select the main HTML dom
-const site_main_text = document.querySelector(`.class_h1`)
+const site_main_text = document.querySelector(`.content`)
 
 // API
 navigator.geolocation.getCurrentPosition(function(position) {
@@ -20,6 +20,9 @@ navigator.geolocation.getCurrentPosition(function(position) {
 
   console.log(position)
 }, function() {
-  alert("Couldn't get location due to restrictions")
+    site_main_text.innerHTML = `
+    <p>
+    Could not get location due to denial of access.
+    </p>`
 })
 
