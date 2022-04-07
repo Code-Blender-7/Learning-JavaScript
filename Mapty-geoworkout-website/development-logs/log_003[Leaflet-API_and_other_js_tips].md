@@ -14,3 +14,6 @@ To access the leaflet api, we need to copy & paste a couple of stuff.
 TADA... the the feature of the leaflet should work. 
 
 Now the L at the code is called the namespace of the Leaflet api. in the starter files, it contained two functions called tilelayer and maker. The tilelayer is used to change the map view tiles. the maker is a css property used to add markers over the 
+
+
+*Note that the tilelayer can support multiple types of map views. Recommend that you look up to the actual official website.*
