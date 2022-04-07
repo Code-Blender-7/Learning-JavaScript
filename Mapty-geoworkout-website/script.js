@@ -20,17 +20,36 @@ navigator.geolocation.getCurrentPosition(function(position) {
 	console.log(position)
 	const {latitude} = position.coords;
 	const {longitude} = position.coords;
+	const coordiates = [latitude, longitude]
 
 	// the L is called the namespace
-	const map = L.map('map').setView([51.505, -0.09], 13);
+	const map = L.map('map').setView(coordiates, 13);
 
+
+	// map display settings
 	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 	}).addTo(map);
 
-	L.marker([51.5, -0.09]).addTo(map)
-	    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-	    .openPopup();
+	// responds on click
+	map.on('click', function(mapEvent) {
+		console.log(mapEvent);
+		const {lat, lng} = mapEvent.latlng;
+
+		// add a marker [click]
+		L.marker(mapEvent.latlng)
+			.addTo(map)
+		    .bindPopup(L.popup({ // Marker customization..
+		    	maxWidth: 250,
+		    	minWidth: 100,
+		    	autoClose: false,
+		    	closeOnClick: false,
+		    	className: `cycling-popup`,
+		    }))
+		    .setPopupContent('Workout')
+		    .openPopup();
+
+	})
 
 
 }, function() {
