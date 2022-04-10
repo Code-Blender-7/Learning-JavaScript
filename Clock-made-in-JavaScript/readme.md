@@ -20,6 +20,6 @@ The script uses a setTimeOut function of JavaScript to create a new variable cal
 
 The script changes the value of the class everytime it is called. And the cycle repeats itself again and again.
 
-### Preview it live [here](https://htmlpreview.github.io/?https://github.com/Code-Blender-7/Learning-JavaScript/blob/main/Clock%20made%20in%20JavaScript/program-files/index.html)
+### Preview it live [here](https://htmlpreview.github.io/?https://github.com/Code-Blender-7/Learning-JavaScript/blob/main/Clock-made-in-JavaScript/program-files/index.html)
 
 Script done by - [Black_2_white](https://twitter.com/Black_2_white)
