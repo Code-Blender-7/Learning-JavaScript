@@ -14,6 +14,8 @@ const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
 
+let map, mapEvent;
+
 // access the geolocation....
 
 navigator.geolocation.getCurrentPosition(function(position) {
@@ -23,7 +25,7 @@ navigator.geolocation.getCurrentPosition(function(position) {
 	const coordiates = [latitude, longitude]
 
 	// the L is called the namespace
-	const map = L.map('map').setView(coordiates, 13);
+	map = L.map('map').setView(coordiates, 13);
 
 
 	// map display settings
@@ -31,28 +33,45 @@ navigator.geolocation.getCurrentPosition(function(position) {
 	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 	}).addTo(map);
 
+
 	// responds on click
-	map.on('click', function(mapEvent) {
+	map.on('click', function(mapE) {
+		mapEvent = mapE
 		console.log(mapEvent);
 		const {lat, lng} = mapEvent.latlng;
+		form.classList.remove('hidden') // toggle form
+		inputDistance.focus();
 
-		// add a marker [click]
-		L.marker(mapEvent.latlng)
-			.addTo(map)
-		    .bindPopup(L.popup({ // Marker customization..
-		    	maxWidth: 250,
-		    	minWidth: 100,
-		    	autoClose: false,
-		    	closeOnClick: false,
-		    	className: `cycling-popup`,
-		    }))
-		    .setPopupContent('Workout')
-		    .openPopup();
+
+
 
 	})
 
-
+	// if !location access
 }, function() {
-	alert("Could not get your positon")
+	alert("Could not get your positon. Be sure to activate the location access.")
 })
 
+form.addEventListener('submit', function(e) {
+	e.preventDefault()
+	// clear list
+	inputDistance.value = inputCadence.value = inputDuration.value = inputElevation.value = ''
+	// add a marker [click]
+	L.marker(mapEvent.latlng)
+		.addTo(map)
+	    .bindPopup(L.popup({ // Marker customization..
+	    	maxWidth: 250,
+	    	minWidth: 100,
+	    	autoClose: false,
+	    	closeOnClick: false,
+	    	className: `cycling-popup`,
+	    }))
+	    .setPopupContent('Workout')
+	    .openPopup();	
+})
+
+
+inputType.addEventListener('change', function() {
+	inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
+	inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
+})

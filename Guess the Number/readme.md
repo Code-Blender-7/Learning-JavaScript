@@ -7,7 +7,7 @@ I really loved the program idea so I decided to enhance it by coding and adding 
 3. script.js - Main JavaScript file required for website page to add feature controls over HTML file.
 
 
-Preview [here](https://htmlpreview.github.io/?https://github.com/Code-Blender-7/Learning-JavaScript/blob/main/Guess%20the%20Number/program-files/index.html) 📑
+## Preview [here](https://htmlpreview.github.io/?https://github.com/Code-Blender-7/Learning-JavaScript/blob/main/Guess%20the%20Number/program-files/index.html) 📑
 
  You can find a working preview of the website page [here](https://twitter.com/Black_2_white/status/1389266041025355780) 😋
 
