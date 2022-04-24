@@ -21,7 +21,9 @@ The class App consists of 5 sub classes and a constructor. The classes include -
 5. _newWorkout() {*After the user fills the creditials of the marker, the new workout is formed. it means that a list is created regarding of the user's details.*}
 
 
-Some of the function uses the data of other classes internally. that's why, the this keyword is used. the global elements are moved to the class and they are assigned as private classes.
+Some of the function uses the data of other classes internally. that's why, the this keyword is used. the global elements are moved to the class and they are assigned as private classes. 
+
+Some of the features uses the data and they call the eventListerners but they get an error. For that, the bind method is used to create a new function that doesn't jeoprodize the function of the Event listener. In a nutshell, **The bind method is a good way to make the classes of the constructor inherit and work with each other's data. The bind is done with the this keyword.**
 
 
 In the end, call the app by creating a new variable and assigning the value to the App class.
