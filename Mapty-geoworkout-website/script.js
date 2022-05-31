@@ -18,6 +18,7 @@ const inputElevation = document.querySelector('.form__input--elevation');
 class Workout {
 	date = new Date()
 	id = (Date.now() + "").slice(-10) // random ID generated based on date.
+	clicks = 0
 
 	constructor(coords, distance, duration) {
 		this.coords = coords;
@@ -30,6 +31,9 @@ class Workout {
 		this.description = `${this.type[0].toUpperCase()}${this.type.slice(1)} on ${months[this.date.getMonth()]} ${this.date.getDate()}`
 	}
 
+	click() {
+		this.clicks++;
+	}
 
 }
 
@@ -40,6 +44,7 @@ class Running extends Workout{
 		this.cadence = cadence;
 		this.calcPace()
 		this._setDiscription()
+		this.click()
 
 	}
 
@@ -71,6 +76,7 @@ class Cycling extends Workout{
 class App {
 	//private instances
 	#map
+	#mapZoomLevel = 13
 	#mapEvent
 	#workouts = []
 
@@ -82,6 +88,7 @@ class App {
 
 	// change the form input settings (Running/Cycling)
 	inputType.addEventListener('change', this._toggleElevationField)
+	containerWorkouts.addEventListener('click', this._moveToWorkoutPopup.bind(this))
 
 	}
 
@@ -101,7 +108,7 @@ class App {
 		const coordiates = [latitude, longitude]
 
 		// the L is called the namespace
-		this.#map = L.map('map').setView(coordiates, 13);
+		this.#map = L.map('map').setView(coordiates, this.#mapZoomLevel); // setView(coordinates, zoomlevel)
 
 		// map display settings
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -258,6 +265,21 @@ class App {
 			`
 		}
 		form.insertAdjacentHTML('afterend', workout_html) // insert after the send
+	}
+
+	_moveToWorkoutPopup(e) {
+		const workoutEl = e.target.closest('.workout'); 
+		if (!workoutEl) return; // return empty if not clicked in the right position
+
+		const workout = this.#workouts.find(work => work.id === workoutEl.dataset.id)
+		this.#map.setView(workout.coords, this.#mapZoomLevel, { // animate based on the coordinates of the workout
+			animate : true,
+			pan : {
+				duration : 1,
+			}
+		})
+
+		workout.click()
 	}
 
 };
