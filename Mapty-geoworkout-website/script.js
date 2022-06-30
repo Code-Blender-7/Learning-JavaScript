@@ -11,7 +11,7 @@ const inputDistance = document.querySelector('.form__input--distance');
 const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
-
+const deleteButton = document.querySelector('.removeLocalData')
 
 
 
@@ -76,12 +76,16 @@ class Cycling extends Workout{
 class App {
 	//private instances
 	#map
-	#mapZoomLevel = 13
+	#mapZoomLevel = 10
 	#mapEvent
 	#workouts = []
 
 	constructor() {
 		this._getPosition();
+
+
+	// get user data from localStorage
+	this._getLocalStorage();
 
 	form.addEventListener('submit', this._newWorkout.bind(this))
 
@@ -89,6 +93,8 @@ class App {
 	// change the form input settings (Running/Cycling)
 	inputType.addEventListener('change', this._toggleElevationField)
 	containerWorkouts.addEventListener('click', this._moveToWorkoutPopup.bind(this))
+
+	deleteButton.addEventListener('click', this._removeLocalStorage.bind(this))
 
 	}
 
@@ -118,6 +124,9 @@ class App {
 
 		// responds on click
 		this.#map.on('click', this._showForm.bind(this));
+		this.#workouts.forEach(work => {this._renderWorkout(work)})
+		this.#workouts.forEach(work => {this._renderWorkoutMarker(work)})
+
 
 	}
 
@@ -185,6 +194,7 @@ class App {
 		this._hideForm()
 		this._renderWorkoutMarker(workout)
 		this._renderWorkout(workout)
+		this._setLocalStorage()
 
 
 
@@ -279,7 +289,29 @@ class App {
 			}
 		})
 
-		workout.click()
+		// workout.click()
+	}
+
+
+	// Save the data in the computer in JSON.
+	_setLocalStorage() {
+		localStorage.setItem('workouts', JSON.stringify(this.#workouts))
+	}
+
+	// Retrieve the data after parsing it
+	_getLocalStorage() {
+		const data = JSON.parse(localStorage.getItem('workouts'))
+
+		if (!data) return;
+
+		this.#workouts = data;
+
+	}
+
+	_removeLocalStorage() {
+		localStorage.removeItem('workouts')
+		location.reload()			
+
 	}
 
 };

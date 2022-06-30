@@ -24,6 +24,10 @@ Simply, these are the features of interaction in the Mapty project. The Load pag
 Let, the workouts be the one that is holding the current workout. The Class App consists of a getPosition(), loadMap(), showForm, toggleElevationField and newWorkout that is used for the concept of Child Class Cycling and the Child Class Running.
 
 
+*EDITED LOG FROM 30th June 2022*
+
+The workout architecture has all the modules that are required to run this program without any lack of the features. These can be accessed by calling the _proto_ of the class module.
 
 
-*Expect more development logs related to this.*
+
+_PLEASE NOTE THAT I DID CHANGED SOME OF THE MODULE NAMES BUT I HOPE THAT YOU CAN FIGURE IT OUT.__

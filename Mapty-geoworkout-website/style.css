@@ -7,6 +7,8 @@
   --color-light--1: #aaa;
   --color-light--2: #ececec;
   --color-light--3: rgb(214, 222, 224);
+  --color-blue--1: lightblue;
+  --color-red--1: darkred;
 }
 
 * {
@@ -177,6 +179,22 @@ a:visited {
   font-size: 1.3rem;
   text-align: center;
   color: var(--color-light--1);
+}
+
+.studentCredits {
+  margin-top: auto;
+  font-size: 1.3rem;
+  text-align: center;
+  color: var(--color-blue--1);
+  transition: all 0.2s;
+}
+
+.removeLocalData {
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--color-red--1);
+  background-color: var(--color-light--1);
+  transition: all 0.2s;
 }
 
 .twitter-link:link,
