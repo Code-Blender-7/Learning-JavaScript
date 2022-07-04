@@ -40,7 +40,7 @@ First, click anywhere on the map once it loads up and then enter the info of you
 You can also click any tables on the left side of the app so that it will automatically change the view of the map to the position of your marker.
 
 
-[You can view the project using this link here](https://htmlpreview.github.io/?https://github.com/Code-Blender-7/Learning-JavaScript/blob/main/Mapty-Workouts-App/index.html). 
+<s>[You can view the project using this link here](https://htmlpreview.github.io/?https://github.com/Code-Blender-7/Learning-JavaScript/blob/main/Mapty-Workouts-App/index.html)</s>. *The site of the online preview will render the HTML and CSS but the JS code will be failed to execute. There is perhaps no choice but to run this program locally as of now.* 
 
 * * *
 
