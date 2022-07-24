@@ -6,17 +6,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Demo for extracting info from restcountries v3.1</title>
 		<script defer src="script.js"></script>
-
 	</head>
-	<body>
+	<body style="background-color:grey">
+
 		
 	<p>testing</p>
 
-	<form name="form_setup" action="">
+	<main class="output_field">
+	<form action="#">
 		<label>Enter the country's name: </label>
-		<input id="country-name" type="text" required>
-		<input type="submit" Value="submission" onsubmit="return returnValue()">
+		<input id="country_name" type="text" required/>
+		<input type="submit" Value="submission" onclick="getDataFromCountries(countries.value)"/>
 	</form>
+
+	</main>
 
 </body>
 
